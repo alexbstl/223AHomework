@@ -1,0 +1,841 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[english]{babel}
+\usepackage{xr}
+\usepackage{multicol}
+\usepackage{setspace}
+%\onehalfspacing
+%\doublespacing
+
+%\usepackage{showkeys}
+
+%Graphs
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+%cheatsheet spacing
+\usepackage[compact]{titlesec}
+
+%\titlespacing{\section}{0pt}{*0}{*0}
+%\titlespacing{\subsection}{0pt}{*0}{*0}
+%\titlespacing{\subsubsection}{0pt}{*0}{*0}
+%\usepackage[inline]{enumitem}
+%\setlist[itemize]{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+
+\usepackage{mathrsfs,hyperref, algorithm}%, algorithmic}
+\usepackage{algpseudocode}
+%\usepackage{harvard}
+\usepackage[]{amsmath}
+\usepackage{amsthm}
+\usepackage{fix-cm}
+\usepackage[]{amssymb}
+\usepackage[]{latexsym}
+%\usepackage[latin1]{inputenc}
+\usepackage[right]{eurosym}
+\usepackage[T1]{fontenc}
+\usepackage[]{graphicx}
+\usepackage[]{epsfig}
+\usepackage{fancyhdr}
+\usepackage{bbm}
+\usepackage{pstricks}
+\usepackage{multirow}
+\usepackage[numbers]{natbib}
+\usepackage{subcaption}
+%\usepackage{subfiles}
+\makeatletter
+\renewcommand{\theenumi}{\roman{enumi}}
+\renewcommand{\labelenumi}{({\theenumi})}
+%\renewcommand{\p@enumi}{theenumi-}
+%\renewcommand{\@fnsymbol}[1]{\@alph{#1}}
+%\renewcommand{\@fnsymbol}[1]{\@roman{#1}}
+\newcommand{\v@r}{\operatorname{VaR}}
+\newcommand{\avar}{\operatorname{AVaR}}
+\newcommand{\bbr}{\mathbb{R}}
+\newcommand{\bbc}{\mathbb{C}}
+\newcommand{\var}{\mrm{Var}}
+
+\newcommand{\covar}{\mrm{Covar}}
+\newcommand{\bbe}{\mathbb{E}}
+\newcommand{\bbn}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\bbp}{\mathbb{P}}
+\newcommand{\bbq}{\mathbb{Q}}
+\newcommand{\bbg}{\mathbb{G}}
+\newcommand{\bbf}{\mathbb{F}}
+\newcommand{\bbh}{\mathbb{H}}
+\newcommand{\bbj}{\mathbb{J}}
+\newcommand{\bbz}{\mathbb{Z}}
+\newcommand{\bba}{\mathbb{A}}
+\newcommand{\bbx}{\mathbb{X}}
+\newcommand{\bby}{\mathbb{Y}}
+\newcommand{\bbt}{\mathbb{T}}
+\newcommand{\bu}{\mathbf{u}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\fn}{\footnote}
+%\newcommand{\ci}{\citeasnoun}
+\newcommand{\ci}{\cite}
+\newcommand{\om}{\omega}
+\newcommand{\la}{\lambda}
+\newcommand{\tla}{\tilde{\lambda}}
+\renewcommand{\labelenumi}{(\roman{enumi})}
+\newcommand{\ps}{P}
+\newcommand{\pss}{\ensuremath{\mathbf{p}}} %small boldface
+\newcommand{\pmq}{\ensuremath{\mathbf{Q}}}
+\newcommand{\pmqs}{\ensuremath{\mathbf{q}}}
+\newcommand{\pas}{P-a.s. }
+\newcommand{\pasm}{P\mbox{-a.s. }}
+\newcommand{\asm}{\quad\mbox{a.s. }}
+\newcommand{\cadlag}{c\`adl\`ag }
+\newcommand{\fil}{\mathcal{F}}
+\newcommand{\fcal}{\mathcal{F}}
+\newcommand{\gcal}{\mathcal{G}}
+\newcommand{\dcal}{\mathcal{D}}
+\newcommand{\hcal}{\mathcal{H}}
+\newcommand{\jcal}{\mathcal{J}}
+\newcommand{\pcal}{\mathcal{P}}
+\newcommand{\ecal}{\mathcal{E}}
+\newcommand{\bcal}{\mathcal{B}}
+\newcommand{\ical}{\mathcal{I}}
+\newcommand{\rcal}{\mathcal{R}}
+\newcommand{\scal}{\mathcal{S}}
+\newcommand{\ncal}{\mathcal{N}}
+\newcommand{\lcal}{\mathcal{L}}
+\newcommand{\tcal}{\mathcal{T}}
+\newcommand{\ccal}{\mathcal{C}}
+\newcommand{\kcal}{\mathcal{K}}
+\newcommand{\acal}{\mathcal{A}}
+\newcommand{\mcal}{\mathcal{M}}
+\newcommand{\xcal}{\mathcal{X}}
+\newcommand{\ycal}{\mathcal{Y}}
+\newcommand{\qcal}{\mathcal{Q}}
+\newcommand{\ucal}{\mathcal{U}}
+\newcommand{\ti}{\times}
+\newcommand{\we}{\wedge}
+\newcommand\ip[2]{\langle #1, #2 \rangle}
+\newcommand{\el}{\ell}
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+\newcommand{\indep}{\independent}
+
+\newcommand{\SCF}{{\mbox{\rm SCF}}}
+
+\newcommand{\Z}{{\bf Z}}
+\newcommand{\N}{{\bf N}}
+\newcommand{\M}{{\cal M}}
+\newcommand{\F}{{\cal F}}
+\newcommand{\I}{{\cal I}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\G}{{\cal G}}
+\renewcommand{\L}{{\cal L}}
+\renewcommand{\M}{M}
+\newcommand{\f}{\frac}
+\newcommand{\Norm}{\mcal{N}}
+
+% Griechisch
+
+\newcommand{\ga}{\alpha}
+\newcommand{\gb}{\beta}
+\newcommand{\gc}{y}
+\newcommand{\gd}{\delta}
+\newcommand{\gf}{\phi}
+\newcommand{\gl}{\lambda}
+\newcommand{\gk}{\kappa}
+\newcommand{\go}{\omega}
+\newcommand{\gt}{\theta}
+\newcommand{\gr}{\rho}
+\newcommand{\gs}{\sigma}
+
+\newcommand{\Gf}{\Phi}
+\newcommand{\Go}{\Omega}
+\newcommand{\Gc}{\Gamma}
+\newcommand{\Gt}{\theta}
+\newcommand{\Gd}{\Delta}
+\newcommand{\Gs}{\Sigma}
+\newcommand{\Gl}{\Lambda}
+\renewcommand{\gc}{\gamma}
+\newcommand{\mrm}{\mathrm}
+
+% Differentiation Integration
+\newcommand{\p}{\partial}
+\newcommand{\diff}{\mrm{d}}
+\newcommand{\iy}{\infty}
+\newcommand{\lap}{\triangle}
+\newcommand{\nab}{\nabla}
+
+\newcommand{\Dt}{{\Delta t}}
+
+% Calculation
+\newcounter{modcount}
+\newcommand{\modulo}[2]{%
+\setcounter{modcount}{#1}\relax
+\ifnum\value{modcount}<#2\relax
+\else\relax
+\addtocounter{modcount}{-#2}\relax
+\modulo{\value{modcount}}{#2}\relax
+\fi}
+\newcommand{\tablepictures}[4][c]{\begin{tabular}[#1]{@{}c@{}}#2\vspace{0.5cm}\\(\alph{#4}) #3\end{tabular}}
+\newcounter{gridsearch}
+\newcommand{\tabpic}[2]{
+    \stepcounter{gridsearch}
+    \modulo{\thegridsearch}{2}
+%    \ifnum\strcmp{\modulo{#1}{2}}{1}
+    \ifnum\value{modcount}=0
+        \tablepictures[t]{#1}{#2}{gridsearch}\\[2.0cm]
+    \else
+        \tablepictures[t]{#1}{#2}{gridsearch}&~&
+    \fi
+}
+
+
+\makeatother
+\hyphenation{Glei-chung sto-cha-sti-sche Ge-burts-tags-kind ab-ge-ge-be-nen exi-stie-ren re-pre-sen-tation finanz-markt-aufsicht Modell-un-sicher-heit finanz-markt-risi-ken rung-gal- dier gering-sten} \arraycolsep1mm
+
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}[lemma]{Proposition}
+\newtheorem{theorem}[lemma]{Theorem}
+\newtheorem{corollary}[lemma]{Corollary}
+\newtheorem{definition}[lemma]{Definition}
+\newtheorem{example1}[lemma]{Example}
+\newtheorem{rem1}[lemma]{Remark}
+\newtheorem{assumption}[lemma]{Assumption}
+\newtheorem{alg1}[lemma]{Algorithm}
+\newtheorem{me1}[lemma]{Mechanism}
+\newtheorem*{thm}{Thm}
+
+%makes the following unslanted
+\newenvironment{remark}{\begin{rem1}\rm}{\end{rem1}}
+\newenvironment{example}{\begin{example1}\rm}{\end{example1}}
+\newenvironment{me}{\begin{me1}\rm}{\end{me1}}
+\newenvironment{alg}{\begin{alg1}\rm}{\end{alg1}}
+
+\usepackage{color}
+%\newcommand{\red}{\color{red}}
+
+%%%%%%%%%%%%%%%%%%
+\newcommand{\notiz}[1]{\textcolor{red}{#1}}
+\newcommand{\alex}[1]{\textcolor{olive}{#1}}
+\newcommand{\new}[1]{\textcolor{blue}{#1}}
+\newcommand{\dom}{{\rm dom\,}}
+\newcommand{\Int}{{\rm int\,}}
+\newcommand{\cl}{{\rm cl\,}}
+\newcommand{\T}{\top}
+\newcommand{\diag}{\operatorname{diag}}
+\DeclareMathOperator{\Min}{Min}
+\DeclareMathOperator{\wMin}{wMin}
+\DeclareMathOperator*{\Eff}{Eff}
+\DeclareMathOperator*{\FIX}{FIX}
+\DeclareMathOperator{\App}{App}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\essinf}{ess\,inf}
+\DeclareMathOperator*{\esssup}{ess\,sup}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\newcommand\abs[1]{\left|#1\right|}
+\newcommand{\ind}[1]{\mathbbm{1}_{\{#1\}}}
+\newcommand{\boldgr}[1]{\boldsymbol{#1}}
+
+%%%Alex Probability (and other)
+\renewcommand{\to}{\longrightarrow}
+\newcommand{\prob}{\mathcal{P}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\asto}{\xrightarrow{a.s.}}%{\overset{a.s.}{\to}}
+\newcommand{\pto}{\xrightarrow{\P}}%{\overset{\P}{\to}}
+\newcommand{\Lp}[1]{\xrightarrow{L^#1}}%{\overset{L^#1}\to}
+\newcommand{\dto}{\xrightarrow{\dcal}}
+\newcommand{\nto}{\xrightarrow{n \to \infty}}%{\overset{n \rightarrow \infty}{\to}}
+\newcommand{\dist}{\textrm{~}}
+\newcommand{\eqd}{\overset{\mathcal{D}}{=}}
+\newcommand{\pconv}{\xrightarrow{\P}}%{\overset{P}{\to}}
+\newcommand{\pspace}{$(\Go,\mathcal{F},\P)$}
+\newcommand{\fpspace}{$(\Go,\mathcal{F},\mathcal{F}_t,\P)$}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\B}[1]{B_{#1}}
+\newcommand{\inquote}[1]{``#1''}
+\let\oldref\ref
+\renewcommand{\ref}[1]{(\oldref{#1})}
+%\newcommand{\lcal}{\mathcal{L}}
+\newcommand{\bigpar}[1]{\big( #1 \big)}
+\newcommand{\gw}{\go}
+\newcommand{\gx}{\xi}
+\newcommand{\imp}{\Rightarrow}
+\newcommand{\nimp}{\nRightarrow}
+\newcommand{\gm}{\mu}
+\newcommand{\gp}{\psi}
+\newcommand{\seq}[1]{\{#1\}}
+\newcommand{\pij}[2]{p_{#1}^{#2}}
+\newcommand{\geps}{\epsilon}
+\DeclareMathOperator{\sgn}{sgn}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Homework 2},
+            pdfauthor={Alex Bernstein},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+
+\date{\today}
+\begin{document}
+\title{Homework 2 \\ \large PSTAT 223A \vspace{-2ex}}
+\author{Alex Bernstein \vspace{-2ex}}
+\maketitle
+ \section*{Problem 1 (3.1)}
+ Prove directly from the definition of It\^{o} Integrals that
+ \begin{align*}
+ \int _ { 0 } ^ { t } s d B _ { s } = t B _ { t } - \int _ { 0 } ^ { t } B _ { s } d s.
+ \end{align*}
+ \begin{proof}Letting $\Gd B_j= B_{j+1}-B_j$ and $\Gd t_j = t_{j+1}-t_j$.\\
+ Using the hint and our in-class notation:
+ \begin{align*}
+ \sum_{j=0}^t \Gd(s_j B_j) = \sum_{j=0}^t \Gd s_j \Gd B_j= \sum_{j=0}^t s_j \Gd B_j + \sum_{j=0}^t B_{j+1}\Gd s_j
+ \end{align*}
+ Taking the limit $\Gd s \to 0$, first note:
+ \begin{align*}
+ \lim_{\Gd s \to 0} \sum_{j=0}^t \Gd s_j \Gd B_j = tB_t
+ \end{align*}
+ and therefore: 
+ \begin{align*}
+tB_t=\lim_{\Gd s \to 0} \sum_{j=0}^t \Gd s_j \Gd B_j &= \lim_{\Gd s \to 0}  \Big( \sum_{j=0}^t s_j \Gd B_j + \sum_{j=0}^t B_{j+1}\Gd s_j \Big)\\
+ &= \int_0^t s d B_s + \int_0^t B_s \, ds
+ \end{align*}
+ Therefore, rearranging terms:
+ \begin{align*}
+ \int_0^t s d B_s = tB_t -\int_0^t B_s \, ds
+ \end{align*}
+ as expected.
+ \end{proof}
+ \newcommand{\sectionbreak}{\clearpage}
+ \section*{Problem 2 (3.4)}
+ Check whether the following processes are martingales w.r.t. $\seq{\fcal_t}$:
+ \begin{enumerate}
+ \item $X _ { t } = B _ { t } + 4 t$\\
+ \begin{itemize}
+ \item $\E \abs{X_t} = \E \abs{B_t + 4t} \leq \E \abs{B_t} + 4t < \infty \; \forall t<\infty.$
+ \item $ X_t \in \fcal_t$ because $4t$ is a constant and $B_t \in \fcal_t$.
+ \item Let $s<t$.  Then: $\E\{X_t|\fcal_s\}=\E\{B_t + 4t|\fcal_s\}=4t+\E\{B_t|\fcal_s\}=4t+B_s \neq 4s+ B_s$.  Therefore, $X_t$ is \textbf{not} a martingale.
+ \end{itemize}
+ \item $X _ { t } = B _ { t } ^ { 2 }$
+ \begin{itemize}
+ \item $\E\{ \abs{B_t}^2 \} = \E\{B_t^2\} = t<\infty \; \forall t<\infty$
+ \item $B_t \in \fcal_t$ so therefore $B_t^2 \in \fcal_t$.
+ \item  Let $s<t$.  Then: $\E\{X_t|\fcal_s\}= \E \{(B_t-B)s+B_s)^2|\fcal_s\} = \E \{ (B_t-B_s)^2 + 2 B_s(B_t-B_s) +B_s^2| \fcal_s\} = B_s^2+t-s > B_s^2$, so $B_t^2$ is \textbf{not} a martingale.
+ \end{itemize}
+ \item $X _ { t } = t ^ { 2 } B _ { t } - 2 \int _ { 0 } ^ { t } s B _ { s } d s$
+ \begin{itemize}
+ \item We w.t.s. $\E \abs{X_t} = \E\abs{t^2B_t - 2 \int_0^t sB_s \, ds}< \infty$:
+ \begin{align*}
+ \E \abs{t^2B_t - 2 \int_0^t sB_s \, ds}&\leq \E \abs{t^2B_t + 2 \int_0^t sB_s \, ds}\\
+ & \leq \E \abs{t^2B_t}+ \E \abs{ 2 \int_0^t s B_s ds}\\
+ &\leq t^2 \E \abs{ B_t} + 2\int_0^t s \E \abs{ B_s} ds < \infty
+ \end{align*}
+ with the last inequality following because each term is finite.
+\item $X_t$ is a linear function of measurable functions of $B_s$ where $s \leq t$, so $X_t \in \fcal_t$ as well.
+\item We will show $X_t$ is a martingale.  Let $s<t$:
+\begin{align*}
+\E( X_t | \fcal_s) &= t^2 B_s - 2 \int_0^t u \E(B_u | \fcal_s) du\\
+&= t^2B_s -2 \int_0^s u B_u du -2 \int_s^t u \E(B_u|\fcal_s) du\\
+&= t^2B_s -2 \int_0^s u B_u du-2 \int_s^t u B_s du \\
+&= t^2B_s -2 \int_0^s u B_u du - 2 B_s \frac{u^2}{2}\Big|_s^t\\
+&= t^2B_s -2 \int_0^s u B_u du - B_s (t^2-s^2)\\
+&= s^2 B_s -2 \int_0^s u B_u du\\& = X_s
+\end{align*}
+ \end{itemize}
+ \newpage
+ \item $X _ { t } = B _{ 1 }^{( t )} B _ { 2 }^{( t )}$ where $\left( B _ { 1 }^{( t )} , B _ { 2 }^{( t )} \right)$ is a 2-dimensional Brownian Motion
+ \begin{itemize}
+ \item Clearly, $\E \abs{X_t}= \E \abs{B_t^{(1)}B_t^{(2)}}\leq \E \abs{B_t^{(1)}} \E \abs{B_t^{(2)}} <\infty$ because each expectation is finite.
+ \item Clearly, $B_t^{(1)} \in \fcal_t$ and $B_t^{(2)} \in \fcal_t$ so $\Big(B_t^{(1)}B_t^{(2)}\Big) \in \fcal_t$ as well.
+ \item Letting $s<t$:
+ \begin{align*}
+ \E\{X_t|\fcal_s\} &= \E (B_t^{(1)}B_t^{(2)}|\fcal_s)\\
+ &= \E \Big( (B_t^{(1)}- B_s^{(1)} + B_s^{(1)}  ) (B_t^{(2)}- B_s^{(2)} + B_s^{(2)}  ) |\fcal_s \Big)\\
+ &=\E \Big\{  (B_t^{(1)}-B_s^{(2)})(B_t^{(1)}-B_s^{(2)}) + B_s^{(2)}(B_t^{(1)}-B_s^{(1)})+B_s^{(2)}(B_t^{(2)}-B_s^{(2)}) +B_s^{(1)}B_s^{(2)} \Big| \fcal_s \Big\}\\
+ &=B_s^{(1)}B_s^{(2)}+ \E\{(B_t^{(1)}-B_s^{(2)})\} \E \{(B_t^{(2)}-B_s^{(2)})\}+0 \\
+ &=(B_t^{(1)}-B_s^{(2)})\\
+ &= X_s
+ \end{align*}
+ so $X_t$ is an $\fcal_t$ martingale.
+ \end{itemize}
+ \end{enumerate}
+ \section*{Problem 3 (3.9)}
+ Suppose $f \in \mathcal { V } ( 0 , T )$ and that $t \rightarrow f ( t , \omega )$ is continuous for $a.a. \gw$.  Then, we have shown that
+ $$
+\int _ { 0 } ^ { T } f ( t , \omega ) d B _ { t } ( \omega ) = \lim _ { \Delta t _ { j } \rightarrow 0 } \sum _ { j } f \left( t _ { j } , \omega \right) \Delta B _ { j } \quad \text { in } L ^ { 2 } ( P ).
+$$
+Similarly, we define the \textit{Stratonovich Integral} of $f$ by:
+$$
+\int _ { 0 } ^ { T } f ( t , \omega ) \circ d B _ { t } ( \omega ) = \lim _ { \Delta t _ { j } \rightarrow 0 } \sum _ { j } f \left( t _ { j } ^ { * } , \omega \right) \Delta B _ { j } , \quad \text { where } t _ { j } ^ { * } = \frac { 1 } { 2 } \left( t _ { j } + t _ { j + 1 } \right)
+$$
+whenever the limit exists in $L ^ { 2 } ( P )$.  In general, these integrals are different.  For example, compute 
+$$
+\int _ { 0 } ^ { T } B _ { t } \circ d B _ { t }
+$$
+and compare with Example 3.1.9.
+\begin{proof}
+We will show $$\int _ { 0 } ^ { T } B _ { t } \circ d B _ { t }=\frac{B_T^2}{2}$$.
+Letting $t_j^* = \frac{t_{j+1}+t_j}{2}$
+\begin{align*}
+\int _ { 0 } ^ { T } B _ { t } \circ d B _ { t } &= \lim_{\Gd t \to 0} \sum_{j=0}^T B_{t_j^*} \Gd B_j 
+\end{align*}
+Multiplying the term on the right-hand side by 2, note that:
+\begin{align*}
+2\sum_{j=0}^T B_{t_j^*} \Gd B_j  &= 2\sum_{j=0}^T B_{t_j^*} (B_{t_{j+1}}-B_{t_j^*} +B_{t_j^*} -B_{t_j})\\
+&=2\sum_{j=0}^T B_{t_j^*} (B_{t_{j+1}}-B_{t_j^*}) + 2\sum_{j=0}^T B_{t_j^*}(B_{t_j^*}-B_{t_j}) \\
+&=\sum_{j=0}^T \Big(2B_{t_j^*} (B_{t_{j+1}}-B_{t_j^*})+B_{t_j^*}^2\Big)- \sum_{j=0}^T \Big( 2B_{t_j^*}(B_{t_j}-B_{t_j*})+B_{t_j^*}^2 \Big)\\
+&= \sum_{j=0}^T \Big( (B_{t_{j+1}}-B_{t_j^*}+B_{t_j^*})^2-(B_{t_{j+1}}-B_{t_j^*})^2 \Big)
+- \sum_{j=0}^T \Big( (B_{t_j}-B_{t_{j^*}}+B_{t_j^*})^2 - (B_{t_j}-B_{t_j*})^2 \Big)\\
+&= \sum_{j=0}^T B_{t_{j+1}}^2-B_{t_j}^2-(B_{t_{j+1}}-B_{t_j^*})^2+(B_{t_j}-B_{t_j^*})^2
+\end{align*}
+Note that by the time-inversion property of Brownian Motion:
+\begin{align*}
+B_{t_j}-B_{t_j^*} \eqd B_{t_j^*}-B_{t_j}
+\end{align*}
+Rearranging terms, we have:
+\begin{align*}
+2\sum_{j=0}^T B_{t_j^*} \Gd B_j +(B_{t_{j+1}}-B_{t_j^*})^2-(B_{t_j^*}-B_{t_j})^2=\sum_{j=0}^T B_{t_{j+1}}^2-B_{t_j}^2
+\end{align*}
+where the right-hand side forms a telescoping series such that
+\begin{align*}
+\lim_{\Gd t \to 0} \sum_{j=0}^T B_{t_{j+1}}^2-B_{t_j}^2=B_T^2
+\end{align*}
+Therefore, 
+\begin{align*}
+2\sum_{j=0}^T B_{t_j^*} \Gd B_j +(B_{t_{j+1}}-B_{t_j^*})^2-(B_{t_j^*}-B_{t_j})^2 \xrightarrow{\Gd t \to 0} B_T^2
+\end{align*}
+Clearly, 
+\begin{align*}
+2\sum_{j=0}^T B_{t_j^*} \Gd B_j \xrightarrow{\Gd t \to 0} 2\int _ { 0 } ^ { T } B _ { t } \circ d B _ { t }
+\end{align*}
+Note that $\E (B_{t_{j+1}}-B_{t_j^*})^2 = t_{j+1}-t_j^*$ and $\E (B_{t_{j^*}}-B_{t_j})^2 = t_j^*-t_j$, and
+\begin{align*}
+\E \Big\{ \sum_{j=0}^T  (B_{t_{j+1}}-B_{t_j^*})^2 \Big\} = \sum_{j=0}^t t_{j+1}-t_j^* = \frac{T}{2}
+\end{align*}
+with the same holding true for the other half of the interval.  We now show that 
+$$\sum_{j=0}^T (B_{t_{j+1}}-B_{t_j^*})^2 \xrightarrow{L^2} \frac{T}{2}.$$
+Starting with the definition (and letting $\frac{\Gd t}{2}= t_{j+1}-t_j^*=t_j^*-t_j$): 
+\begin{align*}
+\E \Big\{ \Big[ \sum_{j=0}^T  (B_{t_{j+1}}-B_{t_j^*})^2 -\frac{T}{2} \Big]^2 \Big\} & = \E \Big\{ \Big[ \sum_{j=0}^T   (B_{t_{j+1}}-B_{t_j^*})^2 \Big]^2 \Big\} - \frac{T^2}{2}\\
+&= \var \Big( \sum_{j=0}^T  (B_{t_{j+1}}-B_{t_j^*})^2\Big)\\
+&=\sum_{j=0}^T \var \Big((B_{t_{j+1}}-B_{t_j^*})^2\Big)\\
+&\eqd \sum_{j=0}^T \var (B_{\frac{\Gd t}{2}}^2) \\
+&= \sum_{j=0}^T\Big[ \E (B_{\frac{\Gd t}{2}}^4)-\Big(\frac{\Gd t}{2}\Big)^2 \Big]\\
+(\text{because }\sqrt{t}B_1\eqd B_t )&= \sum_{j=0}^T \Big[ (\Big(\frac{\Gd t}{2}\Big)^2 (\E(B_1^4)-1)  \Big] \\
+(\text{because }\E(B_1^4)-1=2)& \leq 2 \max_j(t_{j+1}-t_j^*) \frac{T}{2} \xrightarrow{ \max_j(t_{j+1}-t_j^*)  \to 0} 0
+\end{align*}
+A nearly identical approach holds to show $\sum_{j=0}^t (B_{t_{j^*}}-B_{t_j})^2 \xrightarrow{L^2} \frac{T}{2}$.  We have therefore shown that
+\begin{align*}
+2\sum_{j=0}^T B_{t_j^*} \Gd B_j +(B_{t_{j+1}}-B_{t_j^*})^2-(B_{t_j^*}-B_{t_j})^2 \xrightarrow{\Gd t \to 0} 2 \int _ { 0 } ^ { T } B _ { t } \circ d B _ { t } +\frac{T}{2}-\frac{T}{2}
+\end{align*}
+with the $L^2$ convergence of the final sum guaranteed by square-integrability of each term and completeness of $L^2$.  So, in the limit, $ 2 \int _ { 0 } ^ { T } B _ { t } \circ d B _ { t }=B_T^2$, or
+\begin{align*}
+\int _ { 0 } ^ { T } B _ { t } \circ d B _ { t } = \frac{B_T^2}{2}
+\end{align*}
+This implies that, in Stratonovich Calculus, $d (\frac{B_t^2}{2}) = B_t \circ dB_t$.
+\end{proof}
+ \section*{Problem 4 (3.18)}
+ Let $B _ { t }$ be $1 -$ dimensional Brownian motion and let $\sigma \in \mathbb { R }$ be constant. Prove directly from the definition that:
+ $$M _ { t } : = \exp \left( \sigma B _ { t } - \frac { 1 } { 2 } \sigma ^ { 2 } t \right) ; \quad t \geq 0$$
+is an $\mathcal { F } _t $ -martingale.
+\begin{proof}
+\begin{enumerate}
+\item: $L^1$/Integrability condition:
+\begin{align*}
+\E \abs{M_t} &= \E \abs{ e^{\gs B_t -\frac{1}{2}\gs^2 t}}=\E ( e^{\gs B_t -\frac{1}{2}\gs^2 t})\\
+&= \E ( e^{\gs B_t})e^{-\frac{1}{2}\gs^2 t}= e^{-\frac{1}{2}\gs^2 t}e^{\frac{1}{2}\gs^2 t}=1<\infty
+\end{align*}
+\item $M_t \in \fcal_t=\gs(B_s; s \leq t)$ clearly, (i.e. $M_t$ adapted)
+\item Martingale Condition.  Let $s <t$.
+\begin{align*}
+\E (M_t| \fcal_s) &= \E \big(e^{\gs B_t -\frac{1}{2}\gs^2 t} \big| \fcal_s \big)\\
+&= e^{-\frac{1}{2}\gs^2 t}\E \big(e^{\gs B_t} \big| \fcal_s \big)\\
+&= e^{-\frac{1}{2}\gs^2 t}e^{\gs B_s}\E \big(e^{\gs (B_t-B_s)} \big| \fcal_s \big)\\
+&= e^{-\frac{1}{2}\gs^2 t}e^{\gs B_s}\E \big(e^{\gs (B_t-B_s)} \big)\\
+&= e^{-\frac{1}{2}\gs^2 t}e^{\gs B_s} e^{\gs^2 \frac{(t-s)}{2}}\\
+&=e^{-\frac{1}{2}\gs^2 2}e^{\gs B_s}= M_s
+\end{align*}
+\end{enumerate}
+Therefore, $M_t$ is a martingale with respect to $\fcal_t$.
+\end{proof}
+ \section*{Problem 5 (4.1)}
+ Use It\^o's formula to write the following stochastic processes $Y _ { t }$ on the standard form $d Y _ { t } = u ( t , \omega ) d t + v ( t , \omega ) d B _ { t }$ for suitable choices of $u \in \mathbb { R } ^ { n } , v \in \mathbb { R } ^ { n \times m }$ and dimensions $n , m :$
+ \begin{enumerate}
+ \item $Y _ { t } = B _ { t } ^ { 2 } ,$ where $B _ { t }$ is 1 -dimensional
+ \item $Y _ { t } = 2 + t + e ^ { B _ { t } }$ ($ B _ { t }$ is 1 dimensional ) 
+ \item $Y _ { t } = B _ { 1 } ^ { 2 } ( t ) + B _ { 2 } ^ { 2 } ( t )$ where $\left( B _ { 1 } , B _ { 2 } \right)$ is $2$- dimensional
+ \item $Y _ { t } = \left( t _ { 0 } + t , B _ { t } \right) $ ($ B _ { t }$ is 1 dimensional )
+ \item $Y _ { t } = \left( B _ { 1 } ( t ) + B _ { 2 } ( t ) + B _ { 3 } ( t ) , B _ { 2 } ^ { 2 } ( t ) - B _ { 1 } ( t ) B _ { 3 } ( t ) \right) ,$ where $\left( B _ { 1 } , B _ { 2 } , B _ { 3 } \right)$ is 3-dimensional.
+ \end{enumerate}
+ \begin{proof} $ $ \newline
+ \begin{enumerate}
+ \item $Y _ { t } = B _ { t } ^ { 2 } ,$ where $B _ { t }$ is 1 -dimensional
+ \begin{align*}
+ dY_t &= 0 dt + 2B_t dB_t+ \frac{1}{2}2 \ip{dB_t}{dB_t}\\
+ &= 2B_t dB_t +dt
+ \end{align*}
+ \item$Y _ { t } = 2 + t + e ^ { B _ { t } }$
+ \begin{align*}
+ dY_t &= dt + e^{B_t} dB_t +\frac{1}{2}e^{B_t} \ip{dB_t}{dB_t}\\
+ &= (1+\frac{1}{2}e^{B_t}) dt + e^{B_t}dB_t
+ \end{align*}
+ \item $Y _ { t } = B _ { 1 } ^ { 2 } ( t ) + B _ { 2 } ^ { 2 } ( t )$
+ \begin{align*}
+ dY_t &= 0 dt + 2 \big( B_1(t) dB_1(t) +B_2(t) dB_2(t) \big)+ \frac{1}{2}(dB_1(t)^2 + dB_2(t)^2) \\
+ &=  2 \big( B_1(t) dB_1(t) +B_2(t) dB_2(t) \big)+ dt
+ \end{align*}
+ \item $Y _ { t } = \left( t _ { 0 } + t , B _ { t } \right) $ 
+ \begin{align*}
+ dY_t = \begin{pmatrix}
+ 1 \\ 0
+ \end{pmatrix} dt + 
+ \begin{pmatrix}
+ 0 \\ 1
+ \end{pmatrix} dB_t+
+  \begin{pmatrix}
+ 0 \\ 0
+ \end{pmatrix} \ip{dB_t}{dB_t} = 
+ \begin{pmatrix}
+ dt \\ dB_t
+ \end{pmatrix}
+ \end{align*}
+ \item $Y _ { t } = \left( B _ { 1 } ( t ) + B _ { 2 } ( t ) + B _ { 3 } ( t ) , B _ { 2 } ^ { 2 } ( t ) - B _ { 1 } ( t ) B _ { 3 } ( t ) \right)$. 
+ \begin{align*}
+ dY_t &= \begin{pmatrix}
+ 0 \\ 0
+ \end{pmatrix}dt + 
+ \begin{pmatrix}
+ dB_1(t) +dB_2(t) + dB_3(t) \\
+ -B_3(t) dB_1(t) +2B_2(t) dB_2(t) -B_1(t) dB_3(t)
+ \end{pmatrix}\\
+ &+\begin{pmatrix}
+ 0\\
+ 0 \ip{dB_1(t)}{dB_1(t)} + 2 \ip{dB_2(t)}{dB_2(t)} + 0 \ip{dB_3(t)}{dB_3(t)}
+ \end{pmatrix}\\
+ &= \begin{pmatrix}
+ 0\\2
+ \end{pmatrix} dt +
+ \begin{pmatrix}
+ 1 & 1 &1\\
+ -B_3(t) & 2 & -B_1(t)
+ \end{pmatrix}
+ \begin{pmatrix}
+ dB_1(t)\\dB_2(t)\\ dB_3(t)
+ \end{pmatrix}
+ \end{align*}
+ \end{enumerate}
+ \end{proof}
+ \section*{Problem 6 (4.2)}
+ Use It\^o's formula to prove that 
+ $$
+\int _ { 0 } ^ { t } B _ { s } ^ { 2 } d B _ { s } = \frac { 1 } { 3 } B _ { t } ^ { 3 } - \int _ { 0 } ^ { t } B _ { s } d s.
+$$
+\begin{proof}
+Let $Y_t = \frac{1}{3}B_t^3$.  Then, applying It\^o's formula, $dY_t = B_t^2 dB_t - B_t dt$.  Rearranging terms and letting $B_0=0$,
+\begin{align*}
+B_t^2 dB_t = dY_t- B_t dt\; \text{ or }\\
+\int_0^t B_s dB_s = \frac{1}{3}B_t^3 \int_0^t B_s ds.
+\end{align*}
+\end{proof}
+ \section*{Problem 7 (4.5)}
+ Let $B _ { t } \in \mathbb { R } , B _ { 0 } = 0 .$ Define
+$$\beta _ { k } ( t ) = \E \left[ B _ { t } ^ { k } \right] ; \quad k = 0,1,2 , \ldots ; t \geq 0$$
+\begin{enumerate}
+\item Use It\^o's formula to prove that
+$$
+ \beta _ { k } ( t ) = \frac { 1 } { 2 } k ( k - 1 ) \int _ { 0 } ^ { t } \beta _ { k - 2 } ( s ) d s ; \quad k \geq 2$$
+\item Deduce that 
+$$
+\E \left[ B _ { t } ^ { 4 } \right] = 3 t ^ { 2 }
+$$
+and find 
+$$
+\E \left[ B _ { t } ^ { 6 } \right]
+$$
+\item Show that 
+$$
+\E \left[ B ( t ) ^ { 2 k + 1 } \right] = 0
+$$
+and 
+\begin{align}\label{eq:ind}
+\E \left[ B ( t ) ^ { 2 k } \right] = \frac { ( 2 k ) ! t ^ { k } } { 2 ^ { k } k ! } ; \quad k = 1,2 , \ldots
+\end{align}
+\end{enumerate} 
+\begin{proof}$ $\newline
+\begin{enumerate}
+\item Let $Y_t=B_t^k$.  Applying It\^o's formula, $dY_t = kB_t^{k-1} dB_t + \frac{1}{2}k(k-1)B_t^{k-2} dt$. Therefore,
+\begin{align*}
+B_t^k =B_0+ k \int_0^t B_s^{k-1} dB_s + \frac{1}{2}k(k-1) \int_0^t B_s^{k-2} ds
+\end{align*}
+Where $k \int_0^t B_s^{k-1} dB_s $ is a martingale by definition and $B_0=0$, so $\E \big\{ k \int_0^t B_s^{k-1} dB_s \big\}=0$, so
+
+Therefore,
+\begin{align*}
+\gb_k(t)=\E(B_t^k) &= \E \Big\{ \frac{1}{2}k(k-1) \int_0^t B_s^{k-2} ds \Big\}\\
+\text{(Fubini's/Tonelli's Theorem)}&= \frac{1}{2}k(k-1) \int_0^t \E\{ B_s^{k-2}\} ds\\
+&= \frac{1}{2}k(k-1) \int_0^t \gb_k(s) ds
+\end{align*}
+as expected 
+\item Again, letting $B_0=0$:
+\begin{align*}
+\E(B_t^4) &= \frac{1}{2}(4)(3) \int_0^t \E(B_s^2) ds\\
+&= 6 \int_0^t s ds = 6\frac{t^2}{2}= 3 t^2
+\end{align*}
+\begin{align*}
+\E(B_t^6)&= \frac{1}{2}(6)(5)\int_0^t \E(B_s^4) ds \\
+&= \frac{30}{2} \int_0^t 3s^2 ds = 45 \frac{t^3}{3}= 15t^3
+\end{align*}
+\item 
+From part (i), 
+\begin{align*}
+\E\{ B_t^{2k+1}\} = \frac{1}{2}(2k+1)(2k) \int_0^t \E(B_s^{2k-1}) ds=0
+\end{align*}
+because $2k-1$ is odd, and all the finite-dimensional distributions of $B_t$ are symmetric about 0, and thus all the odd moments are $0$.  For the second part, we use induction.  Note that the formula in (\ref{eq:ind}) holds for $k=2$.  Assume it holds for the first $k$ elements.  We will show it also holds for $k+1$.
+\begin{align*}
+\E\{ B_t^{2(k+1)}\}&= \frac{1}{2}(2k+2)(2k+1) \int_0^t \E(B_s^{2k}) ds\\
+&= \frac{1}{2}(2k+2)(2k+1)\int_0^t \frac{(2k)!s^k}{2^kk!} ds \\
+&= \frac{1}{2}(2k+2)(2k+1)\frac{(2k)!}{2^kk!}\int_0^t s^k ds\\
+&= \frac{(2k+2)!}{2^{k+1} k!} \frac{t^{k+1}}{k+1}\\
+&= \frac{(2k+2)!t^{k+1}}{2^{k+1} (k+1)!}
+\end{align*}
+proving the inductive hypothesis.
+\end{enumerate}
+\end{proof}
+\section*{Problem 8 (4.10, Tanaka's Formula and Local Time)}
+What happens if we try to apply the It\^o's formula to $g(B_t)$ where $B_t$ is  1-dimensional and $g(x) = \abs{x}$?  In this case $g$ is not $C^2$ at $x=0$, so we modify $g(x)$ near $x=0$ to $g_\epsilon(x)$ as follows:
+$$
+g _ { \epsilon } ( x ) = \left\{ \begin{array} { c c c } { | x | } & { \text { if } } & { | x | \geq \epsilon } \\ { \frac { 1 } { 2 } \left( \epsilon + \frac { x ^ { 2 } } { \epsilon } \right) } & { \text { if } } & { | x | < \epsilon } \end{array} \right.
+$$
+where $\epsilon>0$.
+\begin{enumerate}
+\item Show that 
+$$
+g _ { \epsilon } \left( B _ { t } \right) = g _ { \epsilon } \left( B _ { 0 } \right) + \int _ { 0 } g _ { \epsilon } ^ { \prime } \left( B _ { s } \right) d B _ { s } + \frac { 1 } { 2 \epsilon } \cdot \mathscr{L} \left( \left\{ s \in [ 0 , t ] ; B _ { s } \in ( - \epsilon , \epsilon ) \right\} \right)
+$$
+where $\mathscr{L}(F)$ denotes the Lebesgue measure of set $F$.
+\item Prove that 
+$$
+\int _ { 0 } ^ { t } g _ { \epsilon } ^ { \prime } \left( B _ { s } \right) \cdot \mathcal { X } _ { B _ { s } \in ( - \epsilon , \epsilon ) } d B _ { s } = \int _ { 0 } ^ { t } \frac { B _ { s } } { \epsilon } \cdot \mathcal { X } _ { B _ { s } \in ( - \epsilon , \epsilon ) } d B _ { s } \rightarrow 0
+$$
+in $L^2(P)$ as $\epsilon \rightarrow 0$.
+\item By letting $\epsilon \rightarrow 0$ prove that
+$$
+\left| B _ { t } \right| = \left| B _ { 0 } \right| + \int _ { 0 } ^ { t } \operatorname { sgn } \left( B _ { s } \right) d B _ { s } + L _ { t } ( \omega )
+$$
+where
+$$\label{eq:Tanaka}
+L _ { t } = \lim _ { \epsilon \rightarrow 0 } \frac { 1 } { 2 \epsilon } \cdot \mathscr{L} \left( \left\{ s \in [ 0 , t ] ; B _ { s } \in ( - \epsilon , \epsilon ) \right\} \right) \quad \left( \text { limit in } L ^ { 2 } ( P ) \right)
+$$
+and 
+$$
+\sgn ( x ) = \left\{ \begin{array} { c c c } { - 1 } & { \text { for } } & { x \leq 0 } \\ { 1 } & { \text { for } } & { x > 0 } \end{array} \right.
+$$
+$  L _ { t }$  is called the local time for Brownian motion at $0$ and  (\ref{eq:Tanaka})  is the Tanaka formula (for Brownian motion). 
+\end{enumerate}
+\begin{proof}
+\begin{enumerate}
+\item We use the following approximation for $g(x)= \abs{x}$:
+\begin{align*}
+g_\geps (x)= 
+\begin{cases} 
+\abs{x} & \abs{x}\geq\geps \\
+\frac{1}{2}(\geps + \frac{x^2}{\geps}) & \abs{x}<\geps
+\end{cases}
+\end{align*}
+Taking the first derivative, we get:
+\begin{align*}
+g_{\geps}^{\prime} (x)= 
+\begin{cases}
+\sgn{(x)} & \abs{x} \geq \geps \\
+\frac{x}{\geps} & \abs{x}<\geps
+\end{cases}
+\end{align*}
+and the second:
+\begin{align*}
+g_{\geps}^{\prime \prime} (x)= 
+\begin{cases}
+0& \abs{x} > \geps \\
+\frac{1}{\geps} & \abs{x}<\geps
+\end{cases}
+\end{align*}
+with $g_{\geps}^{\prime \prime} (x)$ undefined at $x=\pm \geps$, which is a set that has Lebesgue measure 0.
+Applying Ito's formula in the integral form to $g_\geps (B_t)$, and using $\mathscr{L}(F)$ to denote the Lebesgue measure of set $F$, we get:
+\newcommand{\gtemp}{g_\geps}
+\begin{align*}
+\gtemp(B_t) &= \gtemp(0) + \int_0^t \gtemp^{'}(B_s) dB_s + \frac{1}{2} \int_0^t \gtemp^{''}(B_s) ds\\
+&= \gtemp(0) + \int_0^t \gtemp^{'}(B_s) dB_s +\frac{1}{2 \geps} \int_0^t \ind{-\geps<B_s<\geps} ds  \\
+&= \gtemp(0) + \int_0^t \gtemp^{'}(B_s) dB_s + \frac{1}{2 \geps}\mathscr{L}( \{s \in [0,t]; \; -\geps < B_s < \geps\})
+\end{align*}
+as expected.
+\item As above, letting $ \ind{F}$ be the indicator of a set $F$,
+\begin{align*}
+\int_0^t \gtemp^{'} (B_s) \ind{\abs{Bs}<\geps} dB_s = \int_0^t \frac{B_s}{\geps} \ind{\abs{Bs}<\geps} dB_s
+\end{align*}
+Taking the Expectation of the Square and applying It\^o's Isometry, we get: 
+\begin{align*}
+\E \Big\{ \Big(  \int_0^t \gtemp^{'} (B_s) \ind{\abs{Bs}<\geps} dB_s \Big)^2 \Big\} &= \E \Big\{ \Big( \int_0^t \frac{B_s}{\geps} \ind{\abs{Bs}<\geps} dB_s  \Big)^2 \Big\} \\
+\text{ (It\^o's Isometry) }&= \E \Big\{ \int_0^t \big( \frac{B_s}{\geps} \ind{\abs{B_s}<\geps} \big)^2 ds \Big\}\\
+&= \E \Big\{ \frac{1}{\geps^2} \int_0^t B_s^2 \ind{\abs{B_s}<\geps} \Big\}\\
+\text{ (Fubini's/Tonelli's Theorem) } &= \frac{1}{\geps^2} \int_0^t \E ( B_s^2 \ind{\abs{B_s}<\geps}) ds \\
+&\leq \frac{1}{\geps^2}\int_0^t \geps^2 \E (\ind{\abs{B_s}<\geps}) ds \\
+\text{(letting $B_0=0$)}&=  \int_0^t \P(\abs{B_s}<\geps) ds\\
+\big\{(\P(\abs{B_s}<\geps) \xrightarrow{\geps \to 0} 0 \big\} &\to 0 
+\end{align*}
+as expected.
+\item First, note that $\gtemp(x) \xrightarrow{\geps \to 0}  \abs{x}$ for all $x$.  Breaking the expression for $\gtemp (B_t)$ into parts and taking $\geps \to 0$, we have:
+\begin{align*}
+\gtemp(B_t) &= \gtemp(B_0) + \int_0^t \sgn(B_s) \ind{\abs{B_s}>\geps} ds + \frac{1}{\geps^2}\int_0^t \E (B_s^2 \ind{\abs{B_s}<\geps}) ds +\frac{1}{2 \geps} \mathscr{L}(\{s \in [0,t]; \abs{B_s}<\geps\})\\
+& \xrightarrow{\geps \to 0} g(B_0) + \int_0^t \sgn(B_s) ds+ \lim_{\geps \to 0}\frac{1}{2 \geps} \mathscr{L}(\{s \in [0,t]; \abs{B_s}<\geps\})\\
+&= \abs{B_0} +  \int_0^t \sgn(B_s) ds + L_t(\go)
+\end{align*}
+as expected, with $L_t(\go)$ as defined in the problem statement.
+\end{enumerate}
+\end{proof}
+ \section*{Problem 9 (4.11)}
+Use It\^o's formula to prove that the following stochastic processes are $\seq{\fcal_t}$-martingales:
+\begin{enumerate}
+\item $X _ { t } = e ^ { \frac { 1 } { 2 } t } \cos B _ { t } \quad \left( B _ { t } \in \mathbb { R } \right)$
+\item $X _ { t } = e ^ { \frac { 1 } { 2 } t } \sin B _ { t } \quad \left( B _ { t } \in \mathbb { R } \right)$
+\item $X _ { t } = \left( B _ { t } + t \right) \exp \left( - B _ { t } - \frac { 1 } { 2 } t \right) \quad \left( B _ { t } \in \mathbb{ R } \right)$\\
+\begin{proof}
+For each of these examples, \O ksendal Corollary 3.2.6, it suffices to show that in the differential representation, $d X_t = g(t,\go) d B_t$ where $g(t,\go)\in \mathcal{V}^{(n)}$, with $\mathcal{V}^{(n)}$ as defined in \O ksendal Definition 3.1.4. (i.e. square-integrable, $\fcal_t^{(n)}$ adapted and Borel-measurable.)  We can do this by applying It\^o's Formula in each case.
+\begin{enumerate}
+\item Let $X_t=e^{\frac{1}{2} t} \cos B_t$
+\begin{align*}
+dX_t &= d(e^{\frac{1}{2} t} \cos B_t) = e^{\frac{1}{2} t} d (\cos B_t )+ \cos B_td(e^{\frac{1}{2} t})+ d(e^{\frac{1}{2} t} )d(\cos B_t)\\
+&= e^{\frac{1}{2} t}\Big(-\sin B_t d B_t - \frac{\cos B_t}{2} dt \Big)+e^{\frac{1}{2} t} \frac{\cos B_t}{2}dt-\frac{e^{\frac{1}{2} t}}{2} dt \Big(-\sin B_t d B_t - \frac{\cos B_t}{2} dt \Big)\\
+&= - e^{\frac{1}{2} t}\sin B_t dB_t
+\end{align*}
+where $- e^{\frac{1}{2} t}\sin B_t \in \mathcal{V}(0,T)$, $\forall T \; 0<T < \infty$.  Therefore, $X_t=e^{\frac{1}{2} t} \cos B_t$ is a martingale with respect to $\seq{\fcal_t}$.
+\item Let $X_t=e^{\frac{1}{2} t} \sin B_t$
+\begin{align*}
+dX_t &= d(e^{\frac{1}{2} t} \sin B_t) = e^{\frac{1}{2} t} d (\sin B_t )+ \sin B_td(e^{\frac{1}{2} t})+ d(e^{\frac{1}{2} t} )d(\sin B_t)\\
+&= e^{\frac{1}{2} t} ( \cos B_t dB_t -\frac{1}{2} \sin B_t dt) + \frac{\sin B_t}{2} e^{\frac{1}{2} t}dt- \frac{e^{\frac{1}{2} t}}{2} dt  ( \cos B_t dB_t -\frac{1}{2} \sin B_t dt)\\
+&=e^{\frac{1}{2} t}  \cos B_t dB_t 
+\end{align*}
+where $e^{\frac{1}{2} t}  \cos B_t \in \mathcal{V}(0,T)$, $\forall T \; 0<T < \infty$.  Therefore, $X_t=e^{\frac{1}{2} t} \sin B_t$ is a martingale with respect to $\seq{\fcal_t}$.
+\item Let $X_t = (B_t+t) \exp (-B_t -\frac{1}{2}t)$.  Note that there are two pieces, $(B_t+t)$ and $(e^{(-B_t -\frac{1}{2}t)})$.
+Appling It\^o's formula to each piece, we get:
+\begin{align*}
+d(B_t+t) = dt+dB_t
+\end{align*}
+and
+\begin{align*}
+d( e^{(-B_t -\frac{1}{2}t)}) &= -\frac{ e^{(-B_t -\frac{1}{2}t)}{2}} dt -  e^{(-B_t -\frac{1}{2}t)} d B_t + \frac{ e^{(-B_t -\frac{1}{2}t)}{2} }dt\\
+&= -  e^{(-B_t -\frac{1}{2}t)} d B_t 
+\end{align*}
+Therefore, plugging into the formula for the product of two processes, we get:
+\begin{align*}
+dX_t& = -(B_t+t)  e^{(-B_t -\frac{1}{2}t)} d B_t + e^{(-B_t -\frac{1}{2}t)}(dt+dB_t) - e^{(-B_t -\frac{1}{2}t)} d B_t (dt+dB_t)\\
+& = -(B_t+t)  e^{(-B_t -\frac{1}{2}t)} d B_t + e^{(-B_t -\frac{1}{2}t)}(dt+dB_t)-e^{(-B_t -\frac{1}{2}t)} dt\\
+&=e^{(-B_t -\frac{1}{2}t)}(1-B_t-t)dB_t
+\end{align*}
+Clearly, $e^{(-B_t -\frac{1}{2}t)}(1-B_t-t) \in \mathcal{V}(0,T)$, $\forall T \; 0<T < \infty$.  Therefore $X_t = (B_t+t) e^{(-B_t -\frac{1}{2}t)}$ is a martingale with respect to $\seq{\fcal_t}$.
+\end{enumerate}
+\end{proof}
+\end{enumerate}
+
+ 
+\end{document}

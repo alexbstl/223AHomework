@@ -1,0 +1,668 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[english]{babel}
+\usepackage{xr}
+\usepackage{multicol}
+\usepackage{setspace}
+%\onehalfspacing
+%\doublespacing
+
+%\usepackage{showkeys}
+
+%Graphs
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+%cheatsheet spacing
+\usepackage[compact]{titlesec}
+
+%\titlespacing{\section}{0pt}{*0}{*0}
+%\titlespacing{\subsection}{0pt}{*0}{*0}
+%\titlespacing{\subsubsection}{0pt}{*0}{*0}
+%\usepackage[inline]{enumitem}
+%\setlist[itemize]{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+
+\usepackage{mathrsfs,hyperref, algorithm}%, algorithmic}
+\usepackage{algpseudocode}
+%\usepackage{harvard}
+\usepackage[]{amsmath}
+\usepackage{amsthm}
+\usepackage{fix-cm}
+\usepackage[]{amssymb}
+\usepackage[]{latexsym}
+%\usepackage[latin1]{inputenc}
+\usepackage[right]{eurosym}
+\usepackage[T1]{fontenc}
+\usepackage[]{graphicx}
+\usepackage[]{epsfig}
+\usepackage{fancyhdr}
+\usepackage{bbm}
+\usepackage{pstricks}
+\usepackage{multirow}
+\usepackage[numbers]{natbib}
+\usepackage{subcaption}
+%\usepackage{subfiles}
+\makeatletter
+\renewcommand{\theenumi}{\roman{enumi}}
+\renewcommand{\labelenumi}{({\theenumi})}
+%\renewcommand{\p@enumi}{theenumi-}
+%\renewcommand{\@fnsymbol}[1]{\@alph{#1}}
+%\renewcommand{\@fnsymbol}[1]{\@roman{#1}}
+\newcommand{\v@r}{\operatorname{VaR}}
+\newcommand{\avar}{\operatorname{AVaR}}
+\newcommand{\bbr}{\mathbb{R}}
+\newcommand{\bbc}{\mathbb{C}}
+\newcommand{\var}{\mrm{Var}}
+
+\newcommand{\covar}{\mrm{Covar}}
+\newcommand{\bbe}{\mathbb{E}}
+\newcommand{\bbn}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\bbp}{\mathbb{P}}
+\newcommand{\bbq}{\mathbb{Q}}
+\newcommand{\bbg}{\mathbb{G}}
+\newcommand{\bbf}{\mathbb{F}}
+\newcommand{\bbh}{\mathbb{H}}
+\newcommand{\bbj}{\mathbb{J}}
+\newcommand{\bbz}{\mathbb{Z}}
+\newcommand{\bba}{\mathbb{A}}
+\newcommand{\bbx}{\mathbb{X}}
+\newcommand{\bby}{\mathbb{Y}}
+\newcommand{\bbt}{\mathbb{T}}
+\newcommand{\bu}{\mathbf{u}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\fn}{\footnote}
+%\newcommand{\ci}{\citeasnoun}
+\newcommand{\ci}{\cite}
+\newcommand{\om}{\omega}
+\newcommand{\la}{\lambda}
+\newcommand{\tla}{\tilde{\lambda}}
+\renewcommand{\labelenumi}{(\roman{enumi})}
+\newcommand{\ps}{P}
+\newcommand{\pss}{\ensuremath{\mathbf{p}}} %small boldface
+\newcommand{\pmq}{\ensuremath{\mathbf{Q}}}
+\newcommand{\pmqs}{\ensuremath{\mathbf{q}}}
+\newcommand{\pas}{P-a.s. }
+\newcommand{\pasm}{P\mbox{-a.s. }}
+\newcommand{\asm}{\quad\mbox{a.s. }}
+\newcommand{\cadlag}{c\`adl\`ag }
+\newcommand{\fil}{\mathcal{F}}
+\newcommand{\fcal}{\mathcal{F}}
+\newcommand{\gcal}{\mathcal{G}}
+\newcommand{\dcal}{\mathcal{D}}
+\newcommand{\hcal}{\mathcal{H}}
+\newcommand{\jcal}{\mathcal{J}}
+\newcommand{\pcal}{\mathcal{P}}
+\newcommand{\ecal}{\mathcal{E}}
+\newcommand{\bcal}{\mathcal{B}}
+\newcommand{\ical}{\mathcal{I}}
+\newcommand{\rcal}{\mathcal{R}}
+\newcommand{\scal}{\mathcal{S}}
+\newcommand{\ncal}{\mathcal{N}}
+\newcommand{\lcal}{\mathcal{L}}
+\newcommand{\tcal}{\mathcal{T}}
+\newcommand{\ccal}{\mathcal{C}}
+\newcommand{\kcal}{\mathcal{K}}
+\newcommand{\acal}{\mathcal{A}}
+\newcommand{\mcal}{\mathcal{M}}
+\newcommand{\xcal}{\mathcal{X}}
+\newcommand{\ycal}{\mathcal{Y}}
+\newcommand{\qcal}{\mathcal{Q}}
+\newcommand{\ucal}{\mathcal{U}}
+\newcommand{\ti}{\times}
+\newcommand{\we}{\wedge}
+\newcommand\ip[2]{\langle #1, #2 \rangle}
+\newcommand{\el}{\ell}
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+\newcommand{\indep}{\independent}
+
+\newcommand{\SCF}{{\mbox{\rm SCF}}}
+
+\newcommand{\Z}{{\bf Z}}
+\newcommand{\N}{{\bf N}}
+\newcommand{\M}{{\cal M}}
+\newcommand{\F}{{\cal F}}
+\newcommand{\I}{{\cal I}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\G}{{\cal G}}
+\renewcommand{\L}{{\cal L}}
+\renewcommand{\M}{M}
+\newcommand{\f}{\frac}
+\newcommand{\Norm}{\mcal{N}}
+
+% Griechisch
+
+\newcommand{\ga}{\alpha}
+\newcommand{\gb}{\beta}
+\newcommand{\gc}{y}
+\newcommand{\gd}{\delta}
+\newcommand{\gf}{\phi}
+\newcommand{\gl}{\lambda}
+\newcommand{\gk}{\kappa}
+\newcommand{\go}{\omega}
+\newcommand{\gt}{\theta}
+\newcommand{\gr}{\rho}
+\newcommand{\gs}{\sigma}
+
+\newcommand{\Gf}{\Phi}
+\newcommand{\Go}{\Omega}
+\newcommand{\Gc}{\Gamma}
+\newcommand{\Gt}{\theta}
+\newcommand{\Gd}{\Delta}
+\newcommand{\Gs}{\Sigma}
+\newcommand{\Gl}{\Lambda}
+\renewcommand{\gc}{\gamma}
+\newcommand{\mrm}{\mathrm}
+
+% Differentiation Integration
+\newcommand{\p}{\partial}
+\newcommand{\diff}{\mrm{d}}
+\newcommand{\iy}{\infty}
+\newcommand{\lap}{\triangle}
+\newcommand{\nab}{\nabla}
+
+\newcommand{\Dt}{{\Delta t}}
+
+% Calculation
+\newcounter{modcount}
+\newcommand{\modulo}[2]{%
+\setcounter{modcount}{#1}\relax
+\ifnum\value{modcount}<#2\relax
+\else\relax
+\addtocounter{modcount}{-#2}\relax
+\modulo{\value{modcount}}{#2}\relax
+\fi}
+\newcommand{\tablepictures}[4][c]{\begin{tabular}[#1]{@{}c@{}}#2\vspace{0.5cm}\\(\alph{#4}) #3\end{tabular}}
+\newcounter{gridsearch}
+\newcommand{\tabpic}[2]{
+    \stepcounter{gridsearch}
+    \modulo{\thegridsearch}{2}
+%    \ifnum\strcmp{\modulo{#1}{2}}{1}
+    \ifnum\value{modcount}=0
+        \tablepictures[t]{#1}{#2}{gridsearch}\\[2.0cm]
+    \else
+        \tablepictures[t]{#1}{#2}{gridsearch}&~&
+    \fi
+}
+
+
+\makeatother
+\hyphenation{Glei-chung sto-cha-sti-sche Ge-burts-tags-kind ab-ge-ge-be-nen exi-stie-ren re-pre-sen-tation finanz-markt-aufsicht Modell-un-sicher-heit finanz-markt-risi-ken rung-gal- dier gering-sten} \arraycolsep1mm
+
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}[lemma]{Proposition}
+\newtheorem{theorem}[lemma]{Theorem}
+\newtheorem{corollary}[lemma]{Corollary}
+\newtheorem{definition}[lemma]{Definition}
+\newtheorem{example1}[lemma]{Example}
+\newtheorem{rem1}[lemma]{Remark}
+\newtheorem{assumption}[lemma]{Assumption}
+\newtheorem{alg1}[lemma]{Algorithm}
+\newtheorem{me1}[lemma]{Mechanism}
+\newtheorem*{thm}{Thm}
+
+%makes the following unslanted
+\newenvironment{remark}{\begin{rem1}\rm}{\end{rem1}}
+\newenvironment{example}{\begin{example1}\rm}{\end{example1}}
+\newenvironment{me}{\begin{me1}\rm}{\end{me1}}
+\newenvironment{alg}{\begin{alg1}\rm}{\end{alg1}}
+
+\usepackage{color}
+%\newcommand{\red}{\color{red}}
+
+%%%%%%%%%%%%%%%%%%
+\newcommand{\notiz}[1]{\textcolor{red}{#1}}
+\newcommand{\alex}[1]{\textcolor{olive}{#1}}
+\newcommand{\new}[1]{\textcolor{blue}{#1}}
+\newcommand{\dom}{{\rm dom\,}}
+\newcommand{\Int}{{\rm int\,}}
+\newcommand{\cl}{{\rm cl\,}}
+\newcommand{\T}{\top}
+\newcommand{\diag}{\operatorname{diag}}
+\DeclareMathOperator{\Min}{Min}
+\DeclareMathOperator{\wMin}{wMin}
+\DeclareMathOperator*{\Eff}{Eff}
+\DeclareMathOperator*{\FIX}{FIX}
+\DeclareMathOperator{\App}{App}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\essinf}{ess\,inf}
+\DeclareMathOperator*{\esssup}{ess\,sup}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\newcommand\abs[1]{\left|#1\right|}
+\newcommand{\ind}[1]{\mathbbm{1}_{\{#1\}}}
+\newcommand{\boldgr}[1]{\boldsymbol{#1}}
+
+%%%Alex Probability (and other)
+\renewcommand{\to}{\longrightarrow}
+\newcommand{\prob}{\mathcal{P}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\asto}{\xrightarrow{a.s.}}%{\overset{a.s.}{\to}}
+\newcommand{\pto}{\xrightarrow{\P}}%{\overset{\P}{\to}}
+\newcommand{\Lp}[1]{\xrightarrow{L^#1}}%{\overset{L^#1}\to}
+\newcommand{\dto}{\xrightarrow{\dcal}}
+\newcommand{\nto}{\xrightarrow{n \to \infty}}%{\overset{n \rightarrow \infty}{\to}}
+\newcommand{\dist}{\textrm{~}}
+\newcommand{\eqd}{\overset{\mathcal{D}}{=}}
+\newcommand{\pconv}{\xrightarrow{\P}}%{\overset{P}{\to}}
+\newcommand{\pspace}{$(\Go,\mathcal{F},\P)$}
+\newcommand{\fpspace}{$(\Go,\mathcal{F},\mathcal{F}_t,\P)$}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\B}[1]{B_{#1}}
+\newcommand{\inquote}[1]{``#1''}
+\let\oldref\ref
+\renewcommand{\ref}[1]{(\oldref{#1})}
+%\newcommand{\lcal}{\mathcal{L}}
+\newcommand{\bigpar}[1]{\big( #1 \big)}
+\newcommand{\gw}{\go}
+\newcommand{\gx}{\xi}
+\newcommand{\imp}{\Rightarrow}
+\newcommand{\nimp}{\nRightarrow}
+\newcommand{\gm}{\mu}
+\newcommand{\gp}{\psi}
+\newcommand{\seq}[1]{\{#1\}}
+\newcommand{\pij}[2]{p_{#1}^{#2}}
+\newcommand{\geps}{\epsilon}
+\DeclareMathOperator{\sgn}{sgn}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Homework 2},
+            pdfauthor={Alex Bernstein},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+
+\date{\today}
+\begin{document}
+\title{Homework 4 \\ \large PSTAT 223A \vspace{-2ex}}
+\author{Alex Bernstein \vspace{-2ex}}
+\maketitle
+\section*{Problem 5.16}
+ Consider the general nonlinear SDE of the form 
+ $$ dX_t = f(t,X_t) dt + c(t) X_t dB_t \quad X_0 = x$$
+ where $f: \bbr \times \bbr \to \bbr$ and $c: \bbr \to \bbr$ are continuous deterministic functions.
+ \begin{enumerate}
+ \item Define the integrating factor as: 
+ \begin{align*}
+ F _ { t } = F _ { t } ( \omega ) = \exp \left( - \int _ { 0 } ^ { t } c ( s ) d B _ { s } + \frac { 1 } { 2 } \int _ { 0 } ^ { t } c ^ { 2 } ( s ) d s \right)
+ \end{align*}
+ and show that the SDE can be written as: $$ d(F_t X_t) = F_t f(t,X_t) dt$$
+ \begin{proof}
+ Use the ansatz the $F_t$ is an \i to process, i.e. $dF_t = a(t,F_t) dt + b(t,F_t) dB_t$.  Applying the integration by parts formula:
+\begin{align*}
+ d(F_t X_t) &= X_t dF_t + F_t dX_t + dX_t dF_t \\
+ &= X_t (a(t,F_t) dt + b(t,F_t) dB_t + F(t)(f(t,X_t) dt + + c(t) X_t dB_t + b(t,F_t) c(t) X_t dt
+\end{align*}
+by assumption, $a(t,F_t)X_t + b(t,F_t)c(t) X_t = 0$ and $b(t,F_t)X_t +c(t)X_t F_t =0$.  Therefore, $b(t,F_t) = -c(t)F_t$ and $a(t,F_t) = c^2(t)F_t$, so
+$$ dF_t = c^2(t) F_t dt - c(t) F_t dB_t$$.  Solving by taking $d ( \log F_t)$, we get $$F_t = e^{-\int_0^t c(s) dB_s + \int_0^t \frac{c^2(s)}{2} ds}.$$ because $F_0=1$.
+ \end{proof}
+ \item Define $Y_t  = F_t X_t$ so that $X_t = F_t^{-1} Y_t$.  Note that the previous deterministic differential equation gives us the form
+ $$ \frac{dY_t}{dt} = F_t f(t, F_t^{-1} Y_t)$$.
+ \begin{proof}
+ Note that $Y_t = F_t X_t$, and so $X_t = F_t^{-1} Y_t$.  By the previous part, $$\frac{dY_t}{dt}= F_t f(t,X_t)= F_t f(t,F_t^{-1}Y_t)$$  Note that $Y_0 = F_0 X_0$ and $F_0=1$, so $Y_0=X_0=x$ as expected.
+ \end{proof}
+ \item Solve the SDE \begin{align*}
+ d X _ { t } = \frac { 1 } { X _ { t } } d t + \alpha X _ { t } d B _ { t } ; \quad X _ { 0 } = x > 0
+ \end{align*}
+ where $\ga$ is a constant.
+ \begin{proof}
+ Let \begin{align*}Y_t &= F_tX_t = X_t e^{-\int_0^t \ga dB_s + \frac{1}{2}\int_0^2 \ga^2 ds}\\
+ &= X_t e^{-\ga B_t + \frac{\ga^2 t}{2}}
+ \end{align*}
+ Separating variables and integrating, we get
+ \begin{align*}
+ Y_t = \Big( 2 \int_0^t e^{-2 \ga B_s + a^2s} ds + Y_0^2 \Big)^{\frac{1}{2}}
+ \end{align*}
+ so, solving for $X_t$ we get:
+ \begin{align*}
+ X_t = e^{\ga B_t -\frac{\ga^2 t}{2}}\Big(x^2 + 2 \int_0^t e^{-2\ga B_s + \ga^2 s} ds \Big)^{\frac{1}{2}}
+ \end{align*}
+ \end{proof}
+\item Apply this method to study the solutions of the SDE: 
+\begin{align*}
+d X _ { t } = X _ { t } ^ { \gamma } d t + \alpha X _ { t } d B _ { t } ; \quad X _ { 0 } = x > 0
+\end{align*}
+where $\ga$ and $\gamma$ are constants.  What what value of $\gamma$ do we get explosions?
+\begin{proof}
+Using the same method as previously, define $F_t = e^{-\ga B_t + \frac{\ga^2 t}{2}}$ so $$f(t,F_t^{-1}Y_t) = \Big( e^{\ga B_t - \frac{\ga^2 t}{2}} Y_t \Big)^{\gc}$$  We therefore have:
+\begin{align*}
+\int_0^t \frac{1}{Y_s^{\gc}} dY_t = \frac{1}{-\gc+1} \Big(Y_t^{-\gc+1}-Y_0^{\gc+1} \Big) = \int_0^t e^{\ga B_g - \frac{\ga^2 t}{2}}dt
+\end{align*}
+which blows up if $\gc = 1$.  However, if $\gc = 1$, this is a known Geometric Brownian Motion that can be solved by taking $d \log X_t$ in a more traditional solution method, yielding
+$$X_t = X_0 e^{-(\frac{\ga^2}{2}-1) dt + \ga \int_0^t dB_s}.$$
+\end{proof}
+ \end{enumerate}
+ \section*{Problem 6.2}
+In the linear filtering problem, with $C(t)=0$ and $S_t=S(t) = \E[ (X_t - \hat{X}_t)^2]$ and $S(0)>0$
+\begin{enumerate}
+\item Show that: \begin{align*}
+R(t):= \frac{1}{S(t)}
+\end{align*}
+satisfies the \textit{linear} differential equation 
+\begin{align*}
+R ^ { \prime } ( t ) = - 2 F ( t ) R ( t ) + \frac { G ^ { 2 } ( t ) } { D ^ { 2 } ( t ) } ; \quad R ( 0 ) = \frac { 1 } { S ( 0 ) }
+\end{align*}
+\begin{proof}
+We know that 
+\begin{align*}
+\frac{dS_t}{dt} &= 2F(t) S_t - \Big( \frac{G(t) S_t}{D(t)} \Big)^2 \qquad \text{ so }\\
+\frac{dR_t}{dt} &= \frac{d}{dt}\frac{1}{S_t}=-\frac{1}{S_t^2} \frac{d}{dt}S_t = -\frac{1}{S_t^2}(2F(t) S_t - \frac{G(t)^2 S_t^2}{D_t^2}\\
+&= -2F(t) R(t) -\frac{G(t)^2}{D(t)^2}
+\end{align*}
+and $R_0 = \frac{1}{S_0}>0$.
+\end{proof}
+\item Prove that for the filtering problem given by \O ksendal 6.3.8 and 6.3.9 we have 
+\begin{align*}
+\frac { 1 } { S ( t ) } = \frac { 1 } { S ( 0 ) } \exp \left( - 2 \int _ { 0 } ^ { t } F ( s ) d s \right) + \int _ { 0 } ^ { t } \exp \left( - 2 \int _ { s } ^ { t } F ( u ) d u \right) \frac { G ^ { 2 } ( s ) } { D ^ { 2 } ( s ) } d s
+\end{align*}
+\begin{proof}
+We introduce $$ e^{\big( 2 \int_0^t F(s) ds \big)}$$ as an integrating factor.  Multiplying the above equation by that and moving around factors, we get:
+\begin{align*}
+\frac{d R(t)}{dt}e^{\big( 2 \int_0^t F(s) ds \big)}+ 2F(t)R(t) e^{\big( 2 \int_0^t F(s) ds \big)} &= \frac{G^2(t)}{D^2(t)}e^{\big( 2 \int_0^t F(s) ds \big)}\\
+\frac{d}{dt}\bigg(R(t)e^{\big( 2 \int_0^t F(s) ds \big)} \bigg) &= \frac{G^2(t)}{D^2(t)}e^{\big( 2 \int_0^t F(s) ds \big)}
+\end{align*}
+Integrating both sides, we get:
+\begin{align*}
+R(t) e^{\big( 2 \int_0^t F(s) ds \big)} - R(0) &= \int_0^t \frac{G^2(s)}{D^2(s)} e^{\big( 2 \int_0^s F(r) dr \big)} ds\\
+R(t) & = e^{\big( -2 \int_0^t F(s) ds \big)} \Bigg( R(0) + \int_0^t \frac{G^2(s)}{D^2(s)} e^{\big( 2 \int_0^s F(r) dr \big)} ds \Bigg)\\
+&= e^{\big( -2 \int_0^t F(s) ds \big)} R(0) + \int_0^t e^{-2 \big(  \int_0^t F(r) dr - \int_0^s F(r) dr \big)} \frac{G^2(s)}{D^2(s)} ds \\
+&= e^{\big( -2 \int_0^t F(s) ds \big)} R(0) + \int_0^t e^{-2 \big(  \int_s^t F(r) dr \big)} \frac{G^2(s)}{D^2(s)} ds \\
+\frac{1}{S(t)}&= e^{\big( -2 \int_0^t F(s) ds \big)} \frac{1}{S(0)} + \int_0^t e^{-2 \big(  \int_s^t F(r) dr \big)} \frac{G^2(s)}{D^2(s)} ds 
+\end{align*}
+as expected.
+\end{proof}
+\end{enumerate}
+\section*{Problem 6.5}
+Prove that in the linear setup (6.2.3), (6.2.4) the predicted value
+$$ \E[ X_T| \gcal_t], \qquad T > t$$
+is given by 
+\begin{align*}
+E \left[ X _ { T } | \mathcal { G } _ { t } \right] = \exp \left( \int _ { t } ^ { T } F ( s ) d s \right) \cdot \widehat { X } _ { t }
+\end{align*}
+\begin{proof}
+\begin{align*}
+\E[X_T| \gcal_t] &= \E\Big\{  \exp \big(\int_t^T F(s) ds \big) X_t + \int_t^T \exp\big( \int_s^T F(r) dr \big) C(s) dU_s \Big| \gcal_t \Big\}\\
+&= \E \Big\{ \exp \big( \int_t^T F(s) ds \big) X_t \Big| \gcal_t \Big\}\\
+&=\E \{ X_t  | \gcal_t \} \exp \big( \int_t^T F(s) ds \big)\\
+&= \hat{X}_t \exp \big( \int_t^T F(s) ds \big)
+\end{align*}
+as expected.
+\end{proof}
+\section*{Problem 6.8b}
+Transform the following Stratonovich equation into the It\^o version.
+\begin{align*}
+\left[ \begin{array} { c } { d X _ { 1 } } \\ { d X _ { 2 } } \end{array} \right] = \left[ \begin{array} { c } { X _ { 1 } } \\ { X _ { 2 } } \end{array} \right] d t + \left[ \begin{array} { c } { X _ { 2 } } \\ { X _ { 1 } } \end{array} \right] \circ d B _ { t } \quad \left( B _ { t } \in \mathbf { R } \right)
+\end{align*}
+\begin{proof}
+We need to derive $\tilde{b}_1(t,x)$ and $\tilde{b}_1(t,x)$.
+\begin{align*}
+\tilde{b}_1(t,x) &= b_1(t,x) + \frac{1}{2} \Big( \frac{d \gs_{11}}{d x_1} \gs_{11} +  \frac{d \gs_{12}}{d x_1} \gs_{12} + \frac{d \gs_{11}}{d x_2} \gs_{21}+ \frac{d \gs_{12}}{d x_2} \gs_{22} \Big)\\
+&= b_1(t,x) + \frac{1}{2} X_1
+\end{align*} 
+Similarly, $$\tilde{b}_2(t,x)  = b_2(t,x) +\frac{X_2}{2}.$$  We therefore have:
+\begin{align*}
+\begin{pmatrix}
+dX_1 \\ dX_2
+\end{pmatrix} = \frac{3}{2}\begin{pmatrix}
+X_1 \\ X_2 \end{pmatrix}dt + \begin{pmatrix}
+X_2 \\ X_1 \end{pmatrix} dB_t
+\end{align*}
+\end{proof}
+\section*{Problem 6.9b}
+Transform the following It\^o equation into the Stratonovich version.
+\begin{align*}
+\left[ \begin{array} { l } { d X _ { 1 } } \\ { d X _ { 2 } } \end{array} \right] = \left[ \begin{array} { l l } { X _ { 1 } } & { - X _ { 2 } } \\ { X _ { 2 } } & { X _ { 1 } } \end{array} \right] \left[ \begin{array} { l } { d B _ { 1 } } \\ { d B _ { 2 } } \end{array} \right]
+\end{align*}
+\begin{proof}
+Note that $\tilde{b}_i(t,x) = 0$.  We need to derive $b_1(t,x)$ and $b_2(t,x)$.
+\begin{align*}
+b_1(t,x) &= -\frac{1}{2}  \Big( \frac{d \gs_{11}}{d x_1} \gs_{11} +  \frac{d \gs_{12}}{d x_1} \gs_{12} + \frac{d \gs_{11}}{d x_2} \gs_{21}+ \frac{d \gs_{12}}{d x_2} \gs_{22} \Big)\\
+&= - \frac{1}{2}(X_1 + 0 + 0 - X_1) = 0.
+\end{align*}
+Similarly, 
+\begin{align*}
+b_2(t,x) &= -\frac{1}{2}  \Big( \frac{d \gs_{21}}{d x_1} \gs_{11} +  \frac{d \gs_{22}}{d x_1} \gs_{12} + \frac{d \gs_{21}}{d x_2} \gs_{21}+ \frac{d \gs_{22}}{d x_2} \gs_{22} \Big)\\
+&= -\frac{1}{2}(-X_2 + X_2) = 0,
+\end{align*}
+so our ultimate result is
+\begin{align*}
+\begin{pmatrix}
+dX_1 \\ dX_2
+\end{pmatrix} = 
+\begin{pmatrix}
+X_1 & -X_2 \\ X_2 & X_1 
+\end{pmatrix}
+\begin{pmatrix}
+dB_1 \\ dB_2 
+\end{pmatrix}.
+\end{align*}
+\end{proof}
+\section*{Problem 6.15}
+Suppose $X_t \in \bbr$ at time $t$ is a geometric Brownian Motion given by the equation
+\begin{align*}
+d X _ { t } = \mu X _ { t } d t + \sigma X _ { t } d B _ { t } ; \quad X _ { 0 } = x > 0
+\end{align*}
+where $\gs \neq 0$ and $x$ are known constants.  The parameter $\mu$ is also constant, but we do not know its value, only its probability distribution, which is assumed to be normal with mean $\bar{\mu}$ and variance $a^2$.  We assume that $\mu$ is independent of $\seq{B_s}_{s \geq 0}$ and $\E [\mu^2 ] < \infty$. \\
+We assume that we can observe the value of $X_t$ for all $t$.  Thus we have access to the information ``($\gs$ -algebra)'' $\mcal_t$ generated by $X_s; \; s \leq t$.  Let $\ncal_t$ be the $\gs$-algebra generated by $\xi_t \; s \leq t$.  where 
+\begin{align*}
+d \xi _ { t } = \mu d t + \sigma d B _ { t } ; \quad \xi _ { 0 } = x
+\end{align*}
+\begin{enumerate}
+\item Prove $\mcal_t = \ncal_t$
+\begin{proof}
+\begin{align*}
+dX_t &= \mu X_t dt + \gs X_t dB_t\\
+\frac{dX_t}{X_t} &= \mu dt + \gs dB_t
+\end{align*}
+Let
+\begin{align*}
+F_t&=e^{-\int_0^t \gs dB_s + \frac{1}{2} \int_0^t \gs^2 ds}\\
+Y_t&=F_t X_t \\
+X_t & = \frac{Y_T}{F_t} \quad \text{ so }
+\frac{dY_t}{dt}&=\mu Y_t e^{-\int_0^t \gs dB_s + \frac{1}{2} \int_0^t \gs^2 ds +\int_0^t \gs dB_s - \frac{1}{2} \int_0^t \gs^2 ds} \\
+&= \mu Y_t
+\end{align*}
+Solving and substituting $X_t$ back in:
+\begin{align*}
+X_t = X_0 e^{\int_0^t \gs dB_s + \mu t - \frac{1}{2} \gs^2 t}
+\end{align*}
+solving for $\xi_t$: 
+\begin{align*}
+\xi_t = \xi_0 + \mu_t + \gs \int_0^t dB_s
+\end{align*}
+where $\xi_0$ is a known constant.  We therefore have that
+\begin{align*}
+X_t = X_0 e^{\xi_t - \frac{\gs^2t}{2}-\xi_0}
+\end{align*}
+Similarly, inverting this, we get that $\xi_t = \frac{\log X_t}{X_0} + \xi_0 \frac{\gs^2 t}{2}$ and because these variables are both measurable functions of each other, their generated Sigma Algebras are the same, i.e. $\mcal_t \subseteq \ncal_t$ and $\ncal_t \subseteq \mcal_t$, so $\mcal_t = \ncal_t$.
+\end{proof}
+\item Prove that 
+\begin{align*}
+E [ \mu | \mathcal { N } _ { t } ] = \left( \theta + \sigma ^ { - 2 } t \right) ^ { - 1 } \left( \overline { \mu } \theta + \sigma ^ { - 2 } \xi _ { t } \right)
+\end{align*} where
+$$\theta = E \left[ ( \mu - \overline { \mu } ) ^ { 2 } \right] ^ { - 1 } , \quad \overline { \mu } = E [ \mu ]$$
+\begin{proof}
+Following example 6.2.9 from \O ksendal, we know that $\mu_0=\bar{\mu}$ because the distribution of the dynamics is constant.  Also, note that $a^2 = \frac{1}{\gt}$  We therefore have: 
+\begin{align*}
+\hat{\mu}_t = \E[ \mu| \ncal_t] &= \frac{\gs^2 \mu_0}{\gs^2 +a^2 t} + \frac{a^2 \xi_t}{\gs^2 + a^2 t}\\
+&=\frac{\gs^2 \bar{\mu}}{\gs^2 +a^2 t} + \frac{a^2 \xi_t}{\gs^2 + a^2 t}\\
+&= (\bar{\mu}\gt + \xi_t \gs^{-2})(\gt+ \gs^{-2} t)^{-1}
+\end{align*}
+as expected.
+\end{proof}
+\item Define 
+\begin{align*}
+\widetilde { B } _ { t } = \int _ { 0 } ^ { t } \sigma ^ { - 1 } ( \mu - E [ \mu | \mathcal { M } _ { s } ] ) d s + B _ { t }
+\end{align*}
+Prove that $\widetilde{B}_t$ is a Brownian motion.
+\begin{proof}
+Define $N_t = \xi_t - \int_0^t \hat{\mu}_s ds$.  Then
+\begin{align*}
+dN_t = d \xi_t - \hat{\mu}_t dt.
+\end{align*}
+Define 
+\begin{align*}
+dR_t &= \frac{1}{\gs} dN_t = \frac{1}{\gs}[\mu dt + \gs dB_t - \hat{\mu}_t dt] \\
+\imp R_t &=\frac{1}{\gs} \int_0^t  \mu -\E[\mu | M_s] ds + B_t
+&= \widetilde{B}_t
+\end{align*}
+By \O ksendal 6.2.6, $R_t = \widetilde{B}_t$ is a Brownian Motion.
+\end{proof}
+\item Prove that $\widetilde{B}_t$ is $\mcal_t$-measurable for all $t$.  Hence
+\begin{align*}
+\widetilde{\fcal}_t \subseteq \mcal_t
+\end{align*}
+where $\widetilde{\fcal}_t$ is the $\gs$-algebra generated by $\widetilde{B}_s \; s \leq t$.
+\begin{proof}
+Note that
+\begin{align*}
+\widetilde{B}_t = \frac{1}{\gs} \big( \xi_t - \int_0^t \hat{\mu}_s ds \big)
+\end{align*}
+which is a measurable function of $\xi_t$ and therefore $\ncal_t$ measurable, which, by \textbf{a)} means that it is also $\mcal_t$ measurable.
+\end{proof}
+\item Prove that $\xi_t$ is $\widetilde{\fcal}_t$- measurable for all $t$.  Combined with \textbf{d)} and \textbf{a)} this gives that
+\begin{align*}
+\widetilde { \mathcal { F } } _ { t } = \mathcal { M } _ { t } = \mathcal { N } _ { t } = \mathcal { F } _ { t }
+\end{align*}
+\begin{proof}
+Note that
+\begin{align*}
+d \xi_t = \gs d \widetilde{B}_t + \frac{\gs^{2} \bar{\mu} \gt }{\gs^2 \gt + t} dt + \frac{\xi_t}{\gs^2 \gt + t } dt 
+\end{align*}
+Taking $\frac{1}{\gs^2 \gt + t}$ as an integrating factor, we get:
+\begin{align*}
+d \Big( \frac{\xi_t}{\gs^2 \gt + t} \Big) &= -\xi_t \Big(\frac{\gs^2 \gt}{(\gs^2 \gt +t)^2} \Big) dt+ \frac{1}{\gs^2 \gt + t} d \xi_t\\
+&= \frac{1}{\gs^2 \gt + t} \Big( \gs d \widetilde{B}_t + \frac{\bar{\mu}\gs^2}{\gs^2 \gt +t} \Big)
+\end{align*}
+Note 
+Solving for $\xi_t$, we get:
+\begin{align*}
+\xi_t  &=\frac{\xi_0}{\gs^2 \gt}+ \int_0^t \frac{\bar{\mu} \gs^2 \gt}{(\gs^2 \gt + s)^2} ds + \int_0^t \frac{1}{\gs \gt +s} d B_s\\
+&= -\bar{\mu} \gs^2 \gt \Big( \frac{1}{\gs^2 \gt + t} - \frac{1}{\gs^2 \gt} \Big) + \gs \int_0^t \frac{d \widetilde{B}_s}{\gs^2 \gt +s}\\
+&= \bar{\mu} - \frac{\bar{\mu}\gs^2 \gt}{\gs^2 \gt + t}+\gs \int_0^t \frac{d \widetilde{B}_s}{\gs^2 \gt +s}
+\end{align*}
+which is an $\widetilde{\fcal}_t$-measurable function (everything is either constant or a stochastic integral of $\widetilde{B}_t$).  Therefore $\xi_t$ is $\widetilde{\fcal}_t$-measurable, and the given equality of filtrations holds.
+\end{proof}
+\item Prove that 
+\begin{align*}
+d X _ { t } = E [ \mu | \mathcal { M } _ { t } ] X _ { t } d t + \sigma X _ { t } d \widetilde { B } _ { t }
+\end{align*}
+\begin{proof}
+We have:
+\begin{align*}
+dX_t &= \mu X_t dt + \gs X_t dB_t \\
+&=  X_t d \xi_t\\
+&= X_t ( \gs d \widetilde{B}_t + \hat{\mu}_t dt)\\
+&= \hat{\mu}_t X_t dt + \gs X_t d \widetilde{B}_t\\
+&= \E(\mu|\mcal_t) X_t dt + \gs X_t d \widetilde{B}_t
+\end{align*}
+as expected.
+\end{proof}
+\end{enumerate}
+\end{document}

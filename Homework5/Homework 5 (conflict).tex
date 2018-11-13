@@ -1,0 +1,648 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[english]{babel}
+\usepackage{xr}
+\usepackage{multicol}
+\usepackage{setspace}
+%\onehalfspacing
+%\doublespacing
+
+%\usepackage{showkeys}
+
+%Graphs
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+%cheatsheet spacing
+\usepackage[compact]{titlesec}
+
+%\titlespacing{\section}{0pt}{*0}{*0}
+%\titlespacing{\subsection}{0pt}{*0}{*0}
+%\titlespacing{\subsubsection}{0pt}{*0}{*0}
+%\usepackage[inline]{enumitem}
+%\setlist[itemize]{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+
+\usepackage{mathrsfs,hyperref, algorithm}%, algorithmic}
+\usepackage{algpseudocode}
+%\usepackage{harvard}
+\usepackage[]{amsmath}
+\usepackage{amsthm}
+\usepackage{fix-cm}
+\usepackage[]{amssymb}
+\usepackage[]{latexsym}
+%\usepackage[latin1]{inputenc}
+\usepackage[right]{eurosym}
+\usepackage[T1]{fontenc}
+\usepackage[]{graphicx}
+\usepackage[]{epsfig}
+\usepackage{fancyhdr}
+\usepackage{bbm}
+\usepackage{pstricks}
+\usepackage{multirow}
+\usepackage[numbers]{natbib}
+\usepackage{subcaption}
+%\usepackage{subfiles}
+\makeatletter
+\renewcommand{\theenumi}{\roman{enumi}}
+\renewcommand{\labelenumi}{({\theenumi})}
+%\renewcommand{\p@enumi}{theenumi-}
+%\renewcommand{\@fnsymbol}[1]{\@alph{#1}}
+%\renewcommand{\@fnsymbol}[1]{\@roman{#1}}
+\newcommand{\v@r}{\operatorname{VaR}}
+\newcommand{\avar}{\operatorname{AVaR}}
+\newcommand{\bbr}{\mathbb{R}}
+\newcommand{\bbc}{\mathbb{C}}
+\newcommand{\var}{\mrm{Var}}
+
+\newcommand{\covar}{\mrm{Covar}}
+\newcommand{\bbe}{\mathbb{E}}
+\newcommand{\bbn}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\bbp}{\mathbb{P}}
+\newcommand{\bbq}{\mathbb{Q}}
+\newcommand{\bbg}{\mathbb{G}}
+\newcommand{\bbf}{\mathbb{F}}
+\newcommand{\bbh}{\mathbb{H}}
+\newcommand{\bbj}{\mathbb{J}}
+\newcommand{\bbz}{\mathbb{Z}}
+\newcommand{\bba}{\mathbb{A}}
+\newcommand{\bbx}{\mathbb{X}}
+\newcommand{\bby}{\mathbb{Y}}
+\newcommand{\bbt}{\mathbb{T}}
+\newcommand{\bu}{\mathbf{u}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\fn}{\footnote}
+%\newcommand{\ci}{\citeasnoun}
+\newcommand{\ci}{\cite}
+\newcommand{\om}{\omega}
+\newcommand{\la}{\lambda}
+\newcommand{\tla}{\tilde{\lambda}}
+\renewcommand{\labelenumi}{(\roman{enumi})}
+\newcommand{\ps}{P}
+\newcommand{\pss}{\ensuremath{\mathbf{p}}} %small boldface
+\newcommand{\pmq}{\ensuremath{\mathbf{Q}}}
+\newcommand{\pmqs}{\ensuremath{\mathbf{q}}}
+\newcommand{\pas}{P-a.s. }
+\newcommand{\pasm}{P\mbox{-a.s. }}
+\newcommand{\asm}{\quad\mbox{a.s. }}
+\newcommand{\cadlag}{c\`adl\`ag }
+\newcommand{\fil}{\mathcal{F}}
+\newcommand{\fcal}{\mathcal{F}}
+\newcommand{\gcal}{\mathcal{G}}
+\newcommand{\dcal}{\mathcal{D}}
+\newcommand{\hcal}{\mathcal{H}}
+\newcommand{\jcal}{\mathcal{J}}
+\newcommand{\pcal}{\mathcal{P}}
+\newcommand{\ecal}{\mathcal{E}}
+\newcommand{\bcal}{\mathcal{B}}
+\newcommand{\ical}{\mathcal{I}}
+\newcommand{\rcal}{\mathcal{R}}
+\newcommand{\scal}{\mathcal{S}}
+\newcommand{\ncal}{\mathcal{N}}
+\newcommand{\lcal}{\mathcal{L}}
+\newcommand{\tcal}{\mathcal{T}}
+\newcommand{\ccal}{\mathcal{C}}
+\newcommand{\kcal}{\mathcal{K}}
+\newcommand{\acal}{\mathcal{A}}
+\newcommand{\mcal}{\mathcal{M}}
+\newcommand{\xcal}{\mathcal{X}}
+\newcommand{\ycal}{\mathcal{Y}}
+\newcommand{\qcal}{\mathcal{Q}}
+\newcommand{\ucal}{\mathcal{U}}
+\newcommand{\ti}{\times}
+\newcommand{\we}{\wedge}
+\newcommand\ip[2]{\langle #1, #2 \rangle}
+\newcommand{\el}{\ell}
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+\newcommand{\indep}{\independent}
+
+\newcommand{\SCF}{{\mbox{\rm SCF}}}
+
+\newcommand{\Z}{{\bf Z}}
+\newcommand{\N}{{\bf N}}
+\newcommand{\M}{{\cal M}}
+\newcommand{\F}{{\cal F}}
+\newcommand{\I}{{\cal I}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\G}{{\cal G}}
+\renewcommand{\L}{{\cal L}}
+\renewcommand{\M}{M}
+\newcommand{\f}{\frac}
+\newcommand{\Norm}{\mcal{N}}
+
+% Griechisch
+
+\newcommand{\ga}{\alpha}
+\newcommand{\gb}{\beta}
+\newcommand{\gc}{y}
+\newcommand{\gd}{\delta}
+\newcommand{\gf}{\phi}
+\newcommand{\gl}{\lambda}
+\newcommand{\gk}{\kappa}
+\newcommand{\go}{\omega}
+\newcommand{\gt}{\theta}
+\newcommand{\gr}{\rho}
+\newcommand{\gs}{\sigma}
+
+\newcommand{\Gf}{\Phi}
+\newcommand{\Go}{\Omega}
+\newcommand{\Gc}{\Gamma}
+\newcommand{\Gt}{\theta}
+\newcommand{\Gd}{\Delta}
+\newcommand{\Gs}{\Sigma}
+\newcommand{\Gl}{\Lambda}
+\renewcommand{\gc}{\gamma}
+\newcommand{\mrm}{\mathrm}
+
+% Differentiation Integration
+\newcommand{\p}{\partial}
+\newcommand{\diff}{\mrm{d}}
+\newcommand{\iy}{\infty}
+\newcommand{\lap}{\triangle}
+\newcommand{\nab}{\nabla}
+
+
+\newcommand{\Dt}{{\Delta t}}
+
+% Calculation
+\newcounter{modcount}
+\newcommand{\modulo}[2]{%
+\setcounter{modcount}{#1}\relax
+\ifnum\value{modcount}<#2\relax
+\else\relax
+\addtocounter{modcount}{-#2}\relax
+\modulo{\value{modcount}}{#2}\relax
+\fi}
+\newcommand{\tablepictures}[4][c]{\begin{tabular}[#1]{@{}c@{}}#2\vspace{0.5cm}\\(\alph{#4}) #3\end{tabular}}
+\newcounter{gridsearch}
+\newcommand{\tabpic}[2]{
+    \stepcounter{gridsearch}
+    \modulo{\thegridsearch}{2}
+%    \ifnum\strcmp{\modulo{#1}{2}}{1}
+    \ifnum\value{modcount}=0
+        \tablepictures[t]{#1}{#2}{gridsearch}\\[2.0cm]
+    \else
+        \tablepictures[t]{#1}{#2}{gridsearch}&~&
+    \fi
+}
+
+
+\makeatother
+\hyphenation{Glei-chung sto-cha-sti-sche Ge-burts-tags-kind ab-ge-ge-be-nen exi-stie-ren re-pre-sen-tation finanz-markt-aufsicht Modell-un-sicher-heit finanz-markt-risi-ken rung-gal- dier gering-sten} \arraycolsep1mm
+
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}[lemma]{Proposition}
+\newtheorem{theorem}[lemma]{Theorem}
+\newtheorem{corollary}[lemma]{Corollary}
+\newtheorem{definition}[lemma]{Definition}
+\newtheorem{example1}[lemma]{Example}
+\newtheorem{rem1}[lemma]{Remark}
+\newtheorem{assumption}[lemma]{Assumption}
+\newtheorem{alg1}[lemma]{Algorithm}
+\newtheorem{me1}[lemma]{Mechanism}
+\newtheorem*{thm}{Thm}
+
+%makes the following unslanted
+\newenvironment{remark}{\begin{rem1}\rm}{\end{rem1}}
+\newenvironment{example}{\begin{example1}\rm}{\end{example1}}
+\newenvironment{me}{\begin{me1}\rm}{\end{me1}}
+\newenvironment{alg}{\begin{alg1}\rm}{\end{alg1}}
+
+\usepackage{color}
+%\newcommand{\red}{\color{red}}
+
+%%%%%%%%%%%%%%%%%%
+\newcommand{\notiz}[1]{\textcolor{red}{#1}}
+\newcommand{\alex}[1]{\textcolor{olive}{#1}}
+\newcommand{\new}[1]{\textcolor{blue}{#1}}
+\newcommand{\dom}{{\rm dom\,}}
+\newcommand{\Int}{{\rm int\,}}
+\newcommand{\cl}{{\rm cl\,}}
+\newcommand{\T}{\top}
+\newcommand{\diag}{\operatorname{diag}}
+\DeclareMathOperator{\Min}{Min}
+\DeclareMathOperator{\wMin}{wMin}
+\DeclareMathOperator*{\Eff}{Eff}
+\DeclareMathOperator*{\FIX}{FIX}
+\DeclareMathOperator{\App}{App}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\essinf}{ess\,inf}
+\DeclareMathOperator*{\esssup}{ess\,sup}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\newcommand\abs[1]{\left|#1\right|}
+\newcommand{\ind}[1]{\mathbbm{1}_{\{#1\}}}
+\newcommand{\boldgr}[1]{\boldsymbol{#1}}
+
+%%%Alex Probability (and other)
+\newcommand{\pderiv}[3][]{% \deriv[<order>]{<func>}{<var>}
+  \ensuremath{\frac{\partial^{#1} {#2}}{\partial {#3}^{#1}}}}
+\newcommand{\deriv}[3][]{% \deriv[<order>]{<func>}{<var>}
+  \ensuremath{\frac{\diff^{#1} {#2}}{\diff {#3}^{#1}}}}
+
+\renewcommand{\to}{\longrightarrow}
+\newcommand{\prob}{\mathcal{P}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\asto}{\xrightarrow{a.s.}}%{\overset{a.s.}{\to}}
+\newcommand{\pto}{\xrightarrow{\P}}%{\overset{\P}{\to}}
+\newcommand{\Lp}[1]{\xrightarrow{L^#1}}%{\overset{L^#1}\to}
+\newcommand{\dto}{\xrightarrow{\dcal}}
+\newcommand{\nto}{\xrightarrow{n \to \infty}}%{\overset{n \rightarrow \infty}{\to}}
+\newcommand{\dist}{\textrm{~}}
+\newcommand{\eqd}{\overset{\mathcal{D}}{=}}
+\newcommand{\pconv}{\xrightarrow{\P}}%{\overset{P}{\to}}
+\newcommand{\pspace}{$(\Go,\mathcal{F},\P)$}
+\newcommand{\fpspace}{$(\Go,\mathcal{F},\mathcal{F}_t,\P)$}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\B}[1]{B_{#1}}
+\newcommand{\inquote}[1]{``#1''}
+\let\oldref\ref
+\renewcommand{\ref}[1]{(\oldref{#1})}
+%\newcommand{\lcal}{\mathcal{L}}
+\newcommand{\bigpar}[1]{\big( #1 \big)}
+\newcommand{\gw}{\go}
+\newcommand{\gx}{\xi}
+\newcommand{\imp}{\Rightarrow}
+\newcommand{\nimp}{\nRightarrow}
+\newcommand{\gm}{\mu}
+\newcommand{\gp}{\psi}
+\newcommand{\seq}[1]{\{#1\}}
+\newcommand{\pij}[2]{p_{#1}^{#2}}
+\newcommand{\geps}{\epsilon}
+\DeclareMathOperator{\sgn}{sgn}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Homework 2},
+            pdfauthor={Alex Bernstein},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+
+\date{\today}
+\begin{document}
+\title{Homework 4 \\ \large PSTAT 223A \vspace{-2ex}}
+\author{Alex Bernstein \vspace{-2ex}}
+\maketitle
+\section*{Problem 7.1}
+Find the generator of the following It\^o diffusions.  Note that $f \in \mathcal{C}^2_b$ in all cases (twice continuously differentiable and bounded).
+\begin{enumerate}
+\item $d X _ { t } = \mu X _ { t } d t + \sigma d B _ { t }$ \label{eq:a}
+\begin{proof}
+We know $b(X_t,t)=\mu X_t$ and $\gs(X_t,t)=\gs$, so our generator is:
+\begin{align*}
+Af(x) = \mu x \deriv{f}{x} +\frac{1}{2}\gs^2 \deriv[2]{f}{x}
+\end{align*}
+\end{proof}
+\item $d X _ { t } = r X _ { t } d t + \alpha X _ { t } d B _ { t }$
+\begin{proof}
+We have $b(X_t,t)=rX_t $ and $\gs(X_t,t)= \ga X_t$ so
+\begin{align*}
+Af(x) = rx \deriv{f}{x} + \frac{x^2\ga^2}{2} \deriv[2]{f}{x}
+\end{align*}
+\end{proof}
+\item$d Y _ { t } = r d t + \alpha Y _ { t } d B _ { t }$
+\begin{proof}
+We have $b(t,X_t)=r$ and $\gs(t,X_t)=\ga Y_t$ so
+\begin{align*}
+Af(x) = r \deriv{f}{x} + \frac{\ga^2 x^2}{2} \deriv[2]{f}{x}
+\end{align*}
+\end{proof}
+\item $d Y _ { t } = \left[ \begin{array} { c } { d t } \\ { d X _ { t } } \end{array} \right]$ where $X _ { t }$ is as in (\ref{eq:a})
+\begin{proof}
+Note that
+\begin{align*}
+\begin{bmatrix}
+dt \\ dX_t
+\end{bmatrix}=
+\begin{bmatrix}
+1 \\ \mu X_t
+\end{bmatrix} dt +
+\begin{bmatrix}
+0 \\ \gs
+\end{bmatrix} dB_t
+\end{align*} so letting $x_2=x$ and $x_1=t$:
+\begin{align*}
+Af(x) &= \deriv{f}{x_1} + \mu x \deriv{f}{x_2} + \frac{1}{2} \gs^2 \deriv[2]{f}{x_2}\\
+&= \deriv{f}{t} + \mu x \deriv{f}{x} + \frac{1}{2}\gs^2 \deriv[2]{f}{x}
+\end{align*}
+\end{proof}
+\item $\left[ \begin{array} { c } { d X _ { 1 } } \\ { d X _ { 2 } } \end{array} \right] = \left[ \begin{array} { c } { 1 } \\ { X _ { 2 } } \end{array} \right] d t + \left[ \begin{array} { c } { 0 } \\ { e ^ { X _ { 1 } } } \end{array} \right] d B _ { t }$
+\begin{proof}
+\begin{align*}
+Af(x) = \deriv{f}{X_1}+X_2 \deriv{f}{X_2} + \frac{1}{2}e^{X_1} \deriv[2]{f}{X_2}
+\end{align*}
+\end{proof}
+\item $\left[ \begin{array} { l } { d X _ { 1 } } \\ { d X _ { 2 } } \end{array} \right] = \left[ \begin{array} { l } { 1 } \\ { 0 } \end{array} \right] d t + \left[ \begin{array} { c c } { 1 } & { 0 } \\ { 0 } & { X _ { 1 } } \end{array} \right] \left[ \begin{array} { l } { d B _ { 1 } } \\ { d B _ { 2 } } \end{array} \right]$
+\begin{proof}
+\begin{align*}
+Af(x) = \deriv{f}{X_1} + \frac{1}{2}\deriv[2]{f}{X_1} + \frac{1}{2}X_1^2 \deriv[2]{f}{X_2}
+\end{align*}
+\end{proof}
+\item $X_t=(X_1,X_2,\ldots,X_n)$ where $$
+d X _ { k } ( t ) = r _ { k } X _ { k } d t + X _ { k } \cdot \sum _ { j = 1 } ^ { n } \alpha _ { k j } d B _ { j } ; \quad 1 \leq k \leq n
+$$
+\begin{proof}
+\begin{align*}
+Af(x) = \sum_{k=1}^n r_k X_k \deriv{f}{X_k} + \frac{1}{2} \sum_{i=1}^n \sum_{j=1}^n X_i X_j \big( \sum_{k=1}^n \ga_{ik} \ga_{jk} \big) \frac{\diff^2 f}{\diff x_i \diff x_j}
+\end{align*}
+\end{proof}
+\end{enumerate}
+ \section*{Problem 7.2}
+ Find the It\^o diffusion whose generator is the following:
+ \begin{enumerate}
+ \item $A f ( x ) = f ^ { \prime } ( x ) + f ^ { \prime \prime } ( x ) ; f \in C _ { 0 } ^ { 2 } ( \mathbf { R } )$
+ \begin{proof}
+ \begin{align*}
+ Af(x) &= b(X_t) \deriv{f}{x} + \frac{1}{2}\gs^2 \deriv[2]{f}{x}\\
+ \end{align*}
+ so $b(X_t)=1$ and $\gs(X_t)^2 = 2$, so 
+ \begin{align*}
+ dX_t = dt + \sqrt{2} dB_t
+ \end{align*}
+ \end{proof}
+ \item $A f ( t , x ) = \frac { \partial f } { \partial t } + c x \frac { \partial f } { \partial x } + \frac { 1 } { 2 } \alpha ^ { 2 } x ^ { 2 } \frac { \partial ^ { 2 } f } { \partial x ^ { 2 } } ; f \in C _ { 0 } ^ { 2 } \left( \mathbf { R } ^ { 2 } \right)$ where $c,\ga$ are constants.
+ \begin{proof} let $b(x_1) = 1$ and $b(x_2) = cx$, and $\gs=\ga x$ where $x_1=t$ and $x_2=x$.  Then:
+ \begin{align*}
+ \begin{bmatrix}
+ \diff X_1 \\ \diff X_2 
+ \end{bmatrix} =
+ \begin{bmatrix}
+ 1 \\ c x_2
+ \end{bmatrix} dt +
+ \begin{bmatrix}
+ 0 \\ \ga x_2
+ \end{bmatrix} dB_t
+ \end{align*}
+ \end{proof}
+ \item $A f \left( x _ { 1 } , x _ { 2 } \right) = 2 x _ { 2 } \frac { \partial f } { \partial x _ { 1 } } + \ln \left( 1 + x _ { 1 } ^ { 2 } + x _ { 2 } ^ { 2 } \right) \frac { \partial f } { \partial x _ { 2 } }+ \frac { 1 } { 2 } \left( 1 + x _ { 1 } ^ { 2 } \right) \frac { \partial ^ { 2 } f } { \partial x _ { 1 } ^ { 2 } } + x _ { 1 } \frac { \partial ^ { 2 } f } { \partial x _ { 1 } \partial x _ { 2 } } + \frac { 1 } { 2 } \cdot \frac { \partial ^ { 2 } f } { \partial x _ { 2 } ^ { 2 } } ; \quad f \in C _ { 0 } ^ { 2 } \left( \mathbf { R } ^ { 2 } \right)$
+ \begin{proof}
+ Translating the above two-dimensional process into the It\^o diffusion gives us:
+ \begin{align*}
+ \begin{bmatrix}
+ \diff X_1 \\ \diff X_2
+ \end{bmatrix}=
+ \begin{bmatrix}
+ 2 X_2 \\ \log(1+X_1^2 +X_2^2)
+ \end{bmatrix} dt +
+ \begin{bmatrix}
+ X_1 & 1 \\ 1 & 0
+ \end{bmatrix}
+ \begin{bmatrix}
+ dB_1 \\ dB_2
+ \end{bmatrix}
+ \end{align*}
+ \end{proof}
+ \end{enumerate}
+ \section{Problem 7.4}
+ Let $B_t^x$ be a 1-dimensional Brownian Motion starting at $x \in \bbr_+$.  Put $\tau = \inf \left\{ t > 0 ; B _ { t } ^ { x } = 0 \right\}$.
+ \begin{enumerate}
+ \item Prove $\tau < \infty$ a.s. $\P^x$ for all $x>0$.
+ \begin{proof} Let $0<x<k$ for some $k$.  Let $\tau_k = \inf\{t>0 ; B_t = 0 \textrm{ or } B_t=k\}$.  $\tau_k$ is an exit time, so $\P^x(\tau_k < \infty) = 1$.   We apply Dynkin's formula to $f(x) = x$, have $Af(x) = 0$ and let $\P^x(X_{\tau_k}=k)=p_k$:
+\begin{align*}
+\E^x(X_{\tau_k}) &= x\\
+X_{\tau_k} p_k + 0 (1-p_k) &=  x\\
+p_k = \frac{x}{X_{\tau_k}} = \frac{x}{k}
+\end{align*}
+So 
+\begin{align*}
+\P^x( \tau<\infty) &= \lim_{k \to \infty} \Big(1-\P^x(\tau_k = k)\Big) = \lim_{k \to \infty} \Big(1 - p_k\Big)\\
+&= \lim_{k \to \infty} \Big( 1-\frac{x}{k}\Big)= 1
+\end{align*}
+So $\tau<\infty$ a.s.
+\end{proof}
+\item Prove that $\E^x(\tau_k)= \infty$ for all $x>0$
+\begin{proof}
+ We use the same exit time formulation as in the previous part and apply Dynkin's formula to $f(x) = x^2$, and $Af(x) = \frac{1}{2} 2 = 1$:
+ \begin{align*}
+ \E^x (X^2_{\tau_k})&= x^2 + \E^x \Big(\int_0^{\tau_k} Af(X_s) ds \Big)\\
+ &=x^2 + \E^x (\tau_k)\\
+ 0 \P^x(X_{\tau_k}=0)+k^2 \P^x(X_{\tau_k}=k) &= x^2 +  \E^x (\tau_k)\\
+(\text{letting $\P^x(X_{\tau_k}=k)=p_k$}) \qquad \qquad \E^x (\tau_k) &= k^2p_k -x^2
+ \end{align*}
+Combining with $p_k$ derived in the previous part:
+\begin{align*}
+\E^x(\tau_k) &= k^2 \frac{x}{k}-x^2 = kx-x^2\\
+\E^x(\tau) &= \lim_{k \to \infty} \E^x(\tau_k) = \infty
+\end{align*}
+as expected.
+ \end{proof}
+ \end{enumerate}
+ \section*{Problem 7.9}
+ Let $X_t$ be a geometric Brownian Motion, i.e.
+ $$
+d X _ { t } = r X _ { t } d t + \alpha X _ { t } d B _ { t } , \quad X _ { 0 } = x > 0,
+$$ $B_t \in \bbr$; $r, \ga$ are constants.
+\begin{enumerate}
+\item Find the generator $A$ of $X_t$ and compute $Af(x)$ when $f(x) = x^\gc$; $x>0$, $\gc$ constant.  
+\begin{proof}
+\begin{align*}
+Af(x) &= r x \deriv{f}{x} + \frac{1}{2} \ga^2 x^2 \deriv[2]{f}{x}\\
+A(x^\gc)&=r x \gc x^{\gc-1} + \frac{1}{2} ga^2 x^2 \gc (\gc-1) x^{\gc-2}\\
+&= x^\gc \Big( r \gc + \frac{1}{2} \ga^2  ( \gc^2 - \gc) \Big)
+\end{align*}
+\end{proof}
+\item If $r< \frac{1}{2} \ga^2$ then $X_t \to 0$ as $t \to \infty$, a.s. $Q^x$, but what is the probability $p$ that $X_t$, when starting  from $x< R$ ever hits $R$?
+\begin{proof}
+We will apply Dynkin's Formula with $f(x) = x^{\gc_1}$ where $\gc_1=1-\frac{2r}{\ga^2}$.  Note that solving the above SDE defining the Geometric Brownian Motion with $X_0=x$ gives us:
+\begin{align*}
+X_t &= xe^{\big(r-\frac{\ga^2}{2}\big)t+ \ga B_t}
+\end{align*}
+Applying our known value of $\gc_1$ to the generator for $x^{\gc_1}$ gives us:
+\begin{align*}
+A(x^{\gc_1}) &= x^{\gc_1}\Big( r (1-\frac{2r}{\ga^2}) + \frac{1}{2}\ga^2 (1-\frac{2r}{\ga^2})(-\frac{2r}{\ga^2}) \Big)\\
+&= x^{\gc_1}\Big( r (1-\frac{2r}{\ga^2}) + \frac{1}{2}\ga^2 (-\frac{2r}{\ga^2}+\frac{4r^2}{\ga^4}) \Big) \\
+&= x^{\gc_1} 0 = 0
+\end{align*}
+Now, define $\tau_R = \inf\{t>0;  X_t = 0 \text{ or }X_t = R\}$.  This is an exit time, and $0<X_0=x<R$, so $\P^x(\tau_R<\infty)=1$.  Putting this together, we get:
+\begin{align*}
+\E^x(X_{\tau_R}^{\gc_1}) &= x^{\gc_1}\\
+0 \P^x(X_{\tau_R}=0) + R^{\gc_1} \P^x(X_{\tau_R}=R) &= x^{\gc_1}\\
+p_R =  \P^x(X_{\tau_R}=R) =\bigg( \frac{x}{R}\bigg) ^{\gc_1}
+\end{align*}
+as expected.
+\end{proof}
+\item If $r>\frac{1}{2}\ga^2$ then $X_t \xrightarrow{t \to \infty} \infty$.  Let $\tau = \inf \left\{ t > 0 ; X _ { t } \geq R \right\}$.  Use Dynkin's formula with $f(x) = \log x$, $x>0$ to prove that $$
+E ^ { x } [ \tau ] = \frac { \ln \frac { R } { x } } { r - \frac { 1 } { 2 } \alpha ^ { 2 } }
+$$
+\begin{proof}
+Let $\tau_\rho= \inf \{ t>0 X_t = R \text{ or }X_t = \rho \}$ where $0<\rho<x=X_0<R$.  We therefore have that $\tau_{\rho}$ is an exit time and $\P^x(\tau_{\gr}<\infty)=1$.  Applying the the diffusion generator to $\log x$ and integrating that from $0$ to $\tau_\gr$ gives us:
+\begin{align*}
+A \log(X_s) &= r - \frac{1}{2}a^2\\
+\int_0^{\tau_\gr} A \log(X_s) ds &= \int_0^{\tau_{\gr}} \Big(r- \frac{1}{2}a^2 \Big) ds = \tau_\gr \big( r - \frac{1}{2}a^2 \big)
+\end{align*}
+Applying Dynkin's formula gives to $\log X_{\tau_\gr}$ gives us:
+\begin{align*}
+\E^x( \log(X_{\tau_\rho})) &= \log(x) + \E^x \bigg(\int_0^{\tau_\gr} A \log(X_s) ds \bigg)\\
+&= \log(x) + \big( r - \frac{1}{2}a^2 \big) \E^x(\tau_\gr )\\
+\P^x(\log(X_{\tau_\gr}) = \gr) \log \gr + \P^x(\log(X_{\tau_\gr}) = R) \log R &= \log(x) + \big( r - \frac{1}{2}a^2 \big) \E^x(\tau_\gr ).
+\end{align*}
+Let $p_R = \P^x(X_{\tau_\gr}) = R)$ so $ \P^x(\log(X_{\tau_\gr}) = \gr)=1-p_R$.  We now have:
+\begin{align*}
+(1-p_R) \log \gr  + p_R \log R  &= \log(x) + \big( r - \frac{1}{2}\ga^2 \big) \E^x(\tau_\gr )\\
+\E^x( \tau_\gr) &= \frac{p_R(\log R - \log \gr) +\log \gr -\log x}{r-\frac{1}{2}\ga^2}\\
+&= \frac{p_R \log R + (1-p_R) \log \gr - \log x}{r -\frac{1}{2}\ga^2}
+\end{align*}
+From the previous part, we know:
+\begin{align*}
+\E(X_{\tau_{\gr}}^{\gc_1})= p_R R^{\gc_1} + (1-p_R) \gr^{\gc_1} = x^{\gc_1}
+\end{align*}
+so \begin{align*}
+p_R = \frac{x^{\gc_1}-\gr^{\gc_1}}{R^{\gc_1}-\gr^{\gc_1}}
+\end{align*}
+and
+\begin{align*}
+1-p_R = \frac{R^{\gc_1}-x^{\gc_1}}{R^{\gc_1}-\gr^{\gc_1}}
+\end{align*}
+Taking
+\begin{align*}
+\lim_{\gr \to 0} (1-p_R) \log \gr &= \lim_{\gr \to 0} \frac{R^{\gc_1}-x^{\gc_1}}{R^{\gc_1}-\gr^{\gc_1}} \log \gr\\
+(\text{ L'Hopital's Rule})&= \lim_{\gr \to 0}  \frac{R^{\gc_1}-x^{\gc_1}}{-{\gc_1}\gr^{\gc_1-1}}\gr^{-1} \\
+&= \lim_{\gr \to 0} -\frac{R^{\gc_1}-x^{\gc_1}}{\gc_1 \gr^{\gc_1}}\\
+(\text{Note that $\gc_1<0$ so $-\gc_1>0$})&= \lim_{\gr \to 0} \frac{-\gr^{-\gc_1}}{\gc_1}=0.
+\end{align*}
+Similarly, 
+\begin{align*}
+\lim_{\gr \to 0} p_R &= \lim_{\gr \to 0} \frac{x^{\gc_1}-\gr^{\gc_1}}{R^{\gc_1}-\gr^{\gc_1}}\\
+&= \lim_{\gr \to 0} \frac{x^{\gc_1}\gr^{-\gc_1}-1}{R^{\gc_1}\gr^{-\gc_1}-1} = 1,
+\end{align*}
+
+\begin{align*}
+\E^x( \tau_\gr)&= \frac{p_R \log R + (1-p_R) \log \gr - \log x}{r -\frac{1}{2}\ga^2}\\
+& \xrightarrow{\gr \to 0} \frac{\log R - \log x}{r-\frac{1}{2}\ga^2}\\
+&= \frac{\log \big(\frac{R}{x})}{r-\frac{1}{2}\ga^2} = \E^x(\tau)
+\end{align*}
+as expected.
+\end{proof}
+\end{enumerate}
+\section*{Problem 7.18}
+\begin{enumerate}
+\item Let $$
+d X _ { t } = b \left( X _ { t } \right) d t + \sigma \left( X _ { t } \right) d B _ { t } ; \quad X _ { 0 } = x
+$$ be a 1-dimensional It\^o diffusion witch characteristic operator $\acal$.  Let $f \in \ccal^2(\bbr)$ be a solution to the differential equation $$
+\mathcal { A } f ( x ) = b ( x ) f ^ { \prime } ( x ) + \frac { 1 } { 2 } \sigma ^ { 2 } ( x ) f ^ { \prime \prime } ( x ) = 0 ; \quad x \in \mathbf { R }
+$$ let $(a,b)\subset \bbr$ be an open interval such that $x \in (a,b)$ and put $$
+\tau = \inf \left\{ t > 0 ; X _ { t } \notin ( a , b ) \right\}.$$  Assume that $\tau<\infty$ a.s. $\qcal^x$ and define $$
+p = \P ^ { x } \left[ X _ { \tau } = b \right].
+$$
+Use Dynkin's formula to prove that 
+$$
+p = \frac { f ( x ) - f ( a ) } { f ( b ) - f ( a ) }
+$$
+\begin{proof}
+We know by definition, $\acal f(x) =0$, and $\tau$ is an exit time, so $\P^x(\tau<\infty)=1$.  Applying Dynkin's formula, and noting the expectation on the RHS is $0$:
+\begin{align*}
+\E^x( f(X_\tau)) &= f(x) + 0\\
+f(a) \P^x(X_\tau=a)+f(b) \P^x(X_\tau=b) &= f(x)\\
+f(a)(1- p) + f(b) p & = f(x)\\
+p &= \frac{f(x)-f(a)}{f(b)-f(a)}
+\end{align*}
+as expected.
+\end{proof}
+\end{enumerate}
+\end{document}

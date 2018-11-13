@@ -1,0 +1,701 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[english]{babel}
+\usepackage{xr}
+\usepackage{multicol}
+\usepackage{setspace}
+%\onehalfspacing
+%\doublespacing
+
+%\usepackage{showkeys}
+
+%Graphs
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+%cheatsheet spacing
+\usepackage[compact]{titlesec}
+
+%\titlespacing{\section}{0pt}{*0}{*0}
+%\titlespacing{\subsection}{0pt}{*0}{*0}
+%\titlespacing{\subsubsection}{0pt}{*0}{*0}
+%\usepackage[inline]{enumitem}
+%\setlist[itemize]{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+
+\usepackage{mathrsfs,hyperref, algorithm}%, algorithmic}
+\usepackage{algpseudocode}
+%\usepackage{harvard}
+\usepackage[]{amsmath}
+\usepackage{amsthm}
+\usepackage{fix-cm}
+\usepackage[]{amssymb}
+\usepackage[]{latexsym}
+%\usepackage[latin1]{inputenc}
+\usepackage[right]{eurosym}
+\usepackage[T1]{fontenc}
+\usepackage[]{graphicx}
+\usepackage[]{epsfig}
+\usepackage{fancyhdr}
+\usepackage{bbm}
+\usepackage{pstricks}
+\usepackage{multirow}
+\usepackage[numbers]{natbib}
+\usepackage{subcaption}
+%\usepackage{subfiles}
+\makeatletter
+\renewcommand{\theenumi}{\roman{enumi}}
+\renewcommand{\labelenumi}{({\theenumi})}
+%\renewcommand{\p@enumi}{theenumi-}
+%\renewcommand{\@fnsymbol}[1]{\@alph{#1}}
+%\renewcommand{\@fnsymbol}[1]{\@roman{#1}}
+\newcommand{\v@r}{\operatorname{VaR}}
+\newcommand{\avar}{\operatorname{AVaR}}
+\newcommand{\bbr}{\mathbb{R}}
+\newcommand{\bbc}{\mathbb{C}}
+\newcommand{\var}{\mrm{Var}}
+
+\newcommand{\covar}{\mrm{Covar}}
+\newcommand{\bbe}{\mathbb{E}}
+\newcommand{\bbn}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\bbp}{\mathbb{P}}
+\newcommand{\bbq}{\mathbb{Q}}
+\newcommand{\bbg}{\mathbb{G}}
+\newcommand{\bbf}{\mathbb{F}}
+\newcommand{\bbh}{\mathbb{H}}
+\newcommand{\bbj}{\mathbb{J}}
+\newcommand{\bbz}{\mathbb{Z}}
+\newcommand{\bba}{\mathbb{A}}
+\newcommand{\bbx}{\mathbb{X}}
+\newcommand{\bby}{\mathbb{Y}}
+\newcommand{\bbt}{\mathbb{T}}
+\newcommand{\bu}{\mathbf{u}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\fn}{\footnote}
+%\newcommand{\ci}{\citeasnoun}
+\newcommand{\ci}{\cite}
+\newcommand{\om}{\omega}
+\newcommand{\la}{\lambda}
+\newcommand{\tla}{\tilde{\lambda}}
+\renewcommand{\labelenumi}{(\roman{enumi})}
+\newcommand{\ps}{P}
+\newcommand{\pss}{\ensuremath{\mathbf{p}}} %small boldface
+\newcommand{\pmq}{\ensuremath{\mathbf{Q}}}
+\newcommand{\pmqs}{\ensuremath{\mathbf{q}}}
+\newcommand{\pas}{P-a.s. }
+\newcommand{\pasm}{P\mbox{-a.s. }}
+\newcommand{\asm}{\quad\mbox{a.s. }}
+\newcommand{\cadlag}{c\`adl\`ag }
+\newcommand{\fil}{\mathcal{F}}
+\newcommand{\fcal}{\mathcal{F}}
+\newcommand{\gcal}{\mathcal{G}}
+\newcommand{\dcal}{\mathcal{D}}
+\newcommand{\hcal}{\mathcal{H}}
+\newcommand{\jcal}{\mathcal{J}}
+\newcommand{\pcal}{\mathcal{P}}
+\newcommand{\ecal}{\mathcal{E}}
+\newcommand{\bcal}{\mathcal{B}}
+\newcommand{\ical}{\mathcal{I}}
+\newcommand{\rcal}{\mathcal{R}}
+\newcommand{\scal}{\mathcal{S}}
+\newcommand{\ncal}{\mathcal{N}}
+\newcommand{\lcal}{\mathcal{L}}
+\newcommand{\tcal}{\mathcal{T}}
+\newcommand{\ccal}{\mathcal{C}}
+\newcommand{\kcal}{\mathcal{K}}
+\newcommand{\acal}{\mathcal{A}}
+\newcommand{\mcal}{\mathcal{M}}
+\newcommand{\xcal}{\mathcal{X}}
+\newcommand{\ycal}{\mathcal{Y}}
+\newcommand{\qcal}{\mathcal{Q}}
+\newcommand{\ucal}{\mathcal{U}}
+\newcommand{\ti}{\times}
+\newcommand{\we}{\wedge}
+\newcommand\ip[2]{\langle #1, #2 \rangle}
+\newcommand{\el}{\ell}
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+\newcommand{\indep}{\independent}
+
+\newcommand{\SCF}{{\mbox{\rm SCF}}}
+
+\newcommand{\Z}{{\bf Z}}
+\newcommand{\N}{{\bf N}}
+\newcommand{\M}{{\cal M}}
+\newcommand{\F}{{\cal F}}
+\newcommand{\I}{{\cal I}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\G}{{\cal G}}
+\renewcommand{\L}{{\cal L}}
+\renewcommand{\M}{M}
+\newcommand{\f}{\frac}
+\newcommand{\Norm}{\mcal{N}}
+
+% Griechisch
+
+\newcommand{\ga}{\alpha}
+\newcommand{\gb}{\beta}
+\newcommand{\gc}{y}
+\newcommand{\gd}{\delta}
+\newcommand{\gf}{\phi}
+\newcommand{\gl}{\lambda}
+\newcommand{\gk}{\kappa}
+\newcommand{\go}{\omega}
+\newcommand{\gt}{\theta}
+\newcommand{\gr}{\rho}
+\newcommand{\gs}{\sigma}
+
+\newcommand{\Gf}{\Phi}
+\newcommand{\Go}{\Omega}
+\newcommand{\Gc}{\Gamma}
+\newcommand{\Gt}{\theta}
+\newcommand{\Gd}{\Delta}
+\newcommand{\Gs}{\Sigma}
+\newcommand{\Gl}{\Lambda}
+\renewcommand{\gc}{\gamma}
+\newcommand{\mrm}{\mathrm}
+
+% Differentiation Integration
+\newcommand{\p}{\partial}
+\newcommand{\diff}{\mrm{d}}
+\newcommand{\iy}{\infty}
+\newcommand{\lap}{\triangle}
+\newcommand{\nab}{\nabla}
+
+\newcommand{\Dt}{{\Delta t}}
+
+% Calculation
+\newcounter{modcount}
+\newcommand{\modulo}[2]{%
+\setcounter{modcount}{#1}\relax
+\ifnum\value{modcount}<#2\relax
+\else\relax
+\addtocounter{modcount}{-#2}\relax
+\modulo{\value{modcount}}{#2}\relax
+\fi}
+\newcommand{\tablepictures}[4][c]{\begin{tabular}[#1]{@{}c@{}}#2\vspace{0.5cm}\\(\alph{#4}) #3\end{tabular}}
+\newcounter{gridsearch}
+\newcommand{\tabpic}[2]{
+    \stepcounter{gridsearch}
+    \modulo{\thegridsearch}{2}
+%    \ifnum\strcmp{\modulo{#1}{2}}{1}
+    \ifnum\value{modcount}=0
+        \tablepictures[t]{#1}{#2}{gridsearch}\\[2.0cm]
+    \else
+        \tablepictures[t]{#1}{#2}{gridsearch}&~&
+    \fi
+}
+
+
+\makeatother
+\hyphenation{Glei-chung sto-cha-sti-sche Ge-burts-tags-kind ab-ge-ge-be-nen exi-stie-ren re-pre-sen-tation finanz-markt-aufsicht Modell-un-sicher-heit finanz-markt-risi-ken rung-gal- dier gering-sten} \arraycolsep1mm
+
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}[lemma]{Proposition}
+\newtheorem{theorem}[lemma]{Theorem}
+\newtheorem{corollary}[lemma]{Corollary}
+\newtheorem{definition}[lemma]{Definition}
+\newtheorem{example1}[lemma]{Example}
+\newtheorem{rem1}[lemma]{Remark}
+\newtheorem{assumption}[lemma]{Assumption}
+\newtheorem{alg1}[lemma]{Algorithm}
+\newtheorem{me1}[lemma]{Mechanism}
+\newtheorem*{thm}{Thm}
+
+%makes the following unslanted
+\newenvironment{remark}{\begin{rem1}\rm}{\end{rem1}}
+\newenvironment{example}{\begin{example1}\rm}{\end{example1}}
+\newenvironment{me}{\begin{me1}\rm}{\end{me1}}
+\newenvironment{alg}{\begin{alg1}\rm}{\end{alg1}}
+
+\usepackage{color}
+%\newcommand{\red}{\color{red}}
+
+%%%%%%%%%%%%%%%%%%
+\newcommand{\notiz}[1]{\textcolor{red}{#1}}
+\newcommand{\alex}[1]{\textcolor{olive}{#1}}
+\newcommand{\new}[1]{\textcolor{blue}{#1}}
+\newcommand{\dom}{{\rm dom\,}}
+\newcommand{\Int}{{\rm int\,}}
+\newcommand{\cl}{{\rm cl\,}}
+\newcommand{\T}{\top}
+\newcommand{\diag}{\operatorname{diag}}
+\DeclareMathOperator{\Min}{Min}
+\DeclareMathOperator{\wMin}{wMin}
+\DeclareMathOperator*{\Eff}{Eff}
+\DeclareMathOperator*{\FIX}{FIX}
+\DeclareMathOperator{\App}{App}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\essinf}{ess\,inf}
+\DeclareMathOperator*{\esssup}{ess\,sup}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\newcommand\abs[1]{\left|#1\right|}
+\newcommand{\ind}[1]{\mathbbm{1}_{\{#1\}}}
+\newcommand{\boldgr}[1]{\boldsymbol{#1}}
+
+%%%Alex Probability (and other)
+\renewcommand{\to}{\longrightarrow}
+\newcommand{\prob}{\mathcal{P}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\asto}{\xrightarrow{a.s.}}%{\overset{a.s.}{\to}}
+\newcommand{\pto}{\xrightarrow{\P}}%{\overset{\P}{\to}}
+\newcommand{\Lp}[1]{\xrightarrow{L^#1}}%{\overset{L^#1}\to}
+\newcommand{\dto}{\xrightarrow{\dcal}}
+\newcommand{\nto}{\xrightarrow{n \to \infty}}%{\overset{n \rightarrow \infty}{\to}}
+\newcommand{\dist}{\textrm{~}}
+\newcommand{\eqd}{\overset{\mathcal{D}}{=}}
+\newcommand{\pconv}{\xrightarrow{\P}}%{\overset{P}{\to}}
+\newcommand{\pspace}{$(\Go,\mathcal{F},\P)$}
+\newcommand{\fpspace}{$(\Go,\mathcal{F},\mathcal{F}_t,\P)$}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\B}[1]{B_{#1}}
+\newcommand{\inquote}[1]{``#1''}
+\let\oldref\ref
+\renewcommand{\ref}[1]{(\oldref{#1})}
+%\newcommand{\lcal}{\mathcal{L}}
+\newcommand{\bigpar}[1]{\big( #1 \big)}
+\newcommand{\gw}{\go}
+\newcommand{\gx}{\xi}
+\newcommand{\imp}{\Rightarrow}
+\newcommand{\nimp}{\nRightarrow}
+\newcommand{\gm}{\mu}
+\newcommand{\gp}{\psi}
+\newcommand{\seq}[1]{\{#1\}}
+\newcommand{\pij}[2]{p_{#1}^{#2}}
+\newcommand{\geps}{\epsilon}
+\DeclareMathOperator{\sgn}{sgn}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Homework 2},
+            pdfauthor={Alex Bernstein},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+
+\date{\today}
+\begin{document}
+\title{Homework 3 \\ \large PSTAT 223A \vspace{-2ex}}
+\author{Alex Bernstein \vspace{-2ex}}
+\maketitle
+ \section*{Problem 1 (5.1)}
+Verify the given processes solve the given stochastic differential equations: ($B_t$ denotes the 1-dimensional Brownian Motion
+\begin{enumerate}
+\item $X _ { t } = e ^ { B _ { t } }$ solves $d X _ { t } = \frac { 1 } { 2 } X _ { t } d t + X _ { t } d B _ { t }$
+\begin{proof}
+We apply Ito's Lemma to $X_t=e^{B_t}$:
+\begin{align*}
+dX_t &= 0 dt + e^{B_t} dB_t + \frac{1}{2} e^{B_t}dB_t^2\\
+&= e^{B_t} dB_t + \frac{1}{2}e^{B_t} dt\\
+&= X_t dB_t + \frac{1}{2}X_t dt
+\end{align*}
+Therefore $e^{B_t}$ solves the given SDE.
+\end{proof}
+\item $X _ { t } = \frac { B _ { t } } { 1 + t } ; B _ { 0 } = 0$ solves $$
+d X _ { t } = - \frac { 1 } { 1 + t } X _ { t } d t + \frac { 1 } { 1 + t } d B _ { t } ; \quad X _ { 0 } = 0 $$
+\begin{proof}
+We apply Ito's Lemma to $X_t = \frac{B_t}{1+t}$,  $B_0=0$
+\begin{align*}
+dX_t &= -\frac{B_t}{(1+t)^2} dt + \frac{1}{1+t}dB_t + \frac{1}{2} 0 dB_t^2\\
+&= -\frac{X_t}{1+t} dt + \frac{1}{1+t}dB_t\\
+X_0&= \frac{B_0}{1+0}= 0
+\end{align*}
+Therefore $X_t= \frac{B_t}{1+t}$ solves the given SDE.
+\end{proof}
+\item $X _ { t } = \sin B _ { t }$ with $B _ { 0 } = a \in \left( - \frac { \pi } { 2 } , \frac { \pi } { 2 } \right)$ solves $$
+d X _ { t } = - \frac { 1 } { 2 } X _ { t } d t + \sqrt { 1 - X _ { t } ^ { 2 } }d B _ { t } \text { for } t < \text { inf } \left\{ s > 0 ; B _ { s } \notin \left[ - \frac { \pi } { 2 } , \frac { \pi } { 2 } \right] \right\} $$
+\begin{proof}
+Applying It\^o's Lemma to $X_t = \sin B_t$:
+\begin{align*}
+dX_t &= 0 dt + \cos B_t dB_t + \frac{1}{2} (-\sin B_t) dB_t^2\\
+&= \cos B_t dB_t -\frac{1}{2} \sin B_t dt\\
+&= \frac{1}{2} \sin B_t dt + \sqrt{1-\sin^2(B_t)} dB_t\\
+&= \frac{1}{2}X_t + \sqrt{1-X_t^2} dB_t
+\end{align*}
+where the condition on $t$ ensures the function is 1-1.  $X_0 = \sin B_0 =\sin a$, where $\pi/2 <a<\pi/2$.  Therefore $X_t = \sin B_t$ solves the SDE given.
+\end{proof}
+\item $\left( X _ { 1 } ( t ) , X _ { 2 } ( t ) \right) = \left( t , e ^ { t } B _ { t } \right)$ solves $$\left[ \begin{array} { l } { d X _ { 1 } } \\ { d X _ { 2 } } \end{array} \right] = \left[ \begin{array} { l } { 1 } \\ { X _ { 2 } } \end{array} \right] d t + \left[ \begin{array} { c } { 0 } \\ { e ^ { X _ { 1 } } } \end{array} \right] d B _ { t } $$
+\begin{proof}
+Applying It\^o's formula to $(X_1(t), X_2(t))$, we get:
+\begin{align*}
+dX_t &= \begin{pmatrix}
+1 \\ e^t B_t
+\end{pmatrix} dt +
+\begin{pmatrix}
+0 \\ e^t
+\end{pmatrix} dB_t + 
+\frac{1}{2} \begin{pmatrix}
+0 \\ 0
+\end{pmatrix} dt\\ &= 
+\begin{pmatrix}
+1 \\ X_2(t)
+\end{pmatrix} dt + 
+\begin{pmatrix}
+0 \\ e^{X_1(t)}
+\end{pmatrix} dB_t
+\end{align*}
+We therefore have that $(X_1(t), X_2(t))$ solves the given SDE.
+\end{proof}
+\item $\left( X _ { 1 } ( t ) , X _ { 2 } ( t ) \right) = \left( \cosh \left( B _ { t } \right) , \sinh \left( B _ { t } \right) \right)$ solves $$\left[ \begin{array} { c } { d X _ { 1 } } \\ { d X _ { 2 } } \end{array} \right] = \frac { 1 } { 2 } \left[ \begin{array} { l } { X _ { 1 } } \\ { X _ { 2 } } \end{array} \right] d t + \left[ \begin{array} { c } { X _ { 2 } } \\ { X _ { 1 } } \end{array} \right] d B _ { t }
+$$
+\begin{proof}
+Applying Ito's Formula to $(X_1(t), X_2(t))$, we get:
+\begin{align*}
+dX_t &=\begin{pmatrix}
+0 \\ 0 
+\end{pmatrix} dt + 
+\begin{pmatrix}
+\sinh(B_t) \\ \cosh(B_t)
+\end{pmatrix} dB_t + 
+\frac{1}{2} \begin{pmatrix}
+\cosh(B_t) \\ \sinh(B_t)
+\end{pmatrix} dt\\
+&= \frac{1}{2} \begin{pmatrix}
+X_1(t) \\ X_2(t)
+\end{pmatrix} dt + 
+\begin{pmatrix}
+X_2(t) \\ X_1(t) 
+\end{pmatrix} dB_t
+\end{align*}
+We therefore have that $(X_1(t), X_2(t))$ solves the given SDE.
+\end{proof}
+\end{enumerate} 
+ \newcommand{\sectionbreak}{\clearpage}
+ \section*{Problem 2 (5.3)}
+ Let $(B_1,\ldots,B_n)$ be a Brownian Motion in $\bbr^n$, $\ga_1, \ldots, \ga_n$ constants.  Solve the stochastic differential equation: $$
+d X _ { t } = r X _ { t } d t + X _ { t } \left( \sum _ { k = 1 } ^ { n } \alpha _ { k } d B _ { k } ( t ) \right) ; \quad X _ { 0 } > 0
+$$
+ \begin{proof}Let $B_0=0$.  Dividing the original SDE by $X_t$, we get: 
+ \begin{align*}
+ \frac{dX_t}{X_t} = r dt + \sum_{k=1}^n \ga_k dB_k(t)
+ \end{align*}
+ Let $g(t,x)=\log x$.  Then $d_{x} g(t,x) = \frac{1}{x}$, $d_{xx} g(t,x) = \frac{-1}{x^2}$, and $d_{t}g(t,x) = 0$.  Applying Ito's Lemma to $d \log X_t$, we get:
+ \begin{align*}
+ d \log X_t &= \frac{1}{X_t} dX_t -\frac{1}{2X_t^2} d \ip{X}{X}_t 
+ \end{align*}
+ Solving for $d \ip{X}{X}_t = (d X_t)^2$, note that all the cross terms and the first term are 0.   We therefore get:
+ \begin{align*}
+ d \ip{X}{X}_t=(dX_t)^2 = X_t^2 \sum_{k=1}^n \ga_k^2 dt
+ \end{align*}
+ Therefore
+ \begin{align*}
+ d \log X_t &= rdt + \sum_{k=1}^n \ga_k dB_k(t) - \frac{1}{2X_t^2} X_t^2 \sum_{k=1}^n \ga_k^2 dt\\
+ &= \Big( r - \frac{1}{2} \sum_{k=1}^n \ga_k^2 \Big) dt + \sum_{k=1}^n \ga_kdB_k(t)\\
+ \int_0^t d \log X_s &= \int_0^t  \Big( r - \frac{1}{2} \sum_{k=1}^n \ga_k^2 \Big) ds + \sum_{k=1}^n \int_0^t \ga_k dB_k(s)\\
+ \log(X_t)-\log(X_0)=\log \Big(\frac{X_t}{X_0}\Big)&=  rt - \frac{t}{2} \sum_{k=1}^n \ga_k^2 + \sum_{k=1}^n \ga_k B_k(t), \; \text{therefore}\\
+ X_t &= X_0 \exp \Big\{ rt-\frac{t}{2}\sum_{k=1}^n \ga_k^2 + \sum_{k=1}^n \ga_k B_k(t) \Big\}
+ \end{align*}
+ \end{proof}
+ \section*{Problem 3 (5.5)}
+ \begin{enumerate}
+\item Solve the Ornstein-Uhlenbeck equation (or Langevin equation) 
+ \begin{align*}
+ dX_t = \mu X_t dt + \gs d B_t
+\end{align*}  where $\mu,\gs$ are real constants and $B_t \in \bbr$.
+\begin{proof} We will use $e^{-\mu t}$ as an integrating factor.  Applying It\^o's Lemma to $d(e^{-\mu t} X_t)$ we get:
+\begin{align*}
+d(e^{-\mu t} X_t )&= -\mu e^{-\mu t} X_t dt + e^{-\mu t} dX_t\\
+&=-\mu e^{-\mu t} X_t dt + e^{-\mu t} (\mu X_t dt + \gs dB_t)\\
+&= e^{-\mu t} \gs dB_t\\
+\int_0^t d(e^{-\mu s} X_s ) & = \int_0^t e^{-\mu s} \gs dB_s\\
+e^{-\mu t}X_t -X_0 &= \gs \int_0^t e^{-\mu s} dB_s\\
+X_t &= X_0e^{\mu t}+  \gs e^{\mu t} \int_0^t e^{-\mu s} dB_s\\
+&=X_0e^{\mu t}+  \gs \int_0^t e^{\mu (t-s)} dB_s
+\end{align*}
+\end{proof}
+ \item  Find $\E [X_t]$ and $\var(X_t)$:
+\begin{enumerate}
+\item $\E[ X_t] = e^{\mu t}\E[X_0]$
+ \begin{proof}
+\begin{align*}
+\E[ X_t] &= \E \Big\{ X_0e^{\mu t}+  \gs \int_0^t e^{\mu (t-s)} dB_s \Big\}\\
+&= e^{\mu t}\E[X_0]+ \gs \E (\int_0^t e^{\mu (t-s)} dB_s )\\
+&= e^{\mu t}\E[X_0]+0\\
+&= e^{\mu t} X_0, \; \text{ if $X_0$ is known}
+\end{align*}
+ \end{proof}
+ \item $\var(X_t) = e^{2\mu t} \var(X_0) + \frac{\gs^2}{2 \mu}(e^{2 \mu t} -1)$
+ \begin{proof}
+ \begin{align*}
+ \var(X_t) &= \E[X_t^2]-\E[X_t]^2 = \E[X_t^2]\\
+ \E[X_t^2]&= \E \Big\{ \Big(X_0e^{\mu t} + \gs \int_0^t e^{\mu (t-s)} dB_s \Big)^2 \Big\}\\
+ &= \E \Big\{ X_0^2 e^{2\mu t} + 2 X_0 e^{\mu t}\gs \int_0^t e^{\mu (t-s)} dB_s+ \gs^2 \Big(\int_0^t e^{\mu (t-s)} dB_s\Big)^2 \Big\}\\
+ &= e^{2 \mu t}\E(X_0^2) + 0 +\gs^2 \E \Big\{ \Big(\int_0^t e^{\mu (t-s)} dB_s \Big)^2 \Big\}\\
+ \text{(It\^o's Isometry)} &=e^{2 \mu t}\E(X_0^2) + \gs^2 \E \Big\{ \int_0^t e^{2 \mu (t-s)}  ds\Big\}\\
+ &= e^{2 \mu t}\E(X_0^2) + \gs^2 e^{2 \mu t}\E \Big\{ \int_0^t e^{-2\mu s} ds \Big\}\\
+ &=e^{2 \mu t}\E(X_0^2) + \gs^2 e^{2 \mu t}\E \Big\{\Big( \frac{1}{2 \mu}-\frac{e^{-2 \mu t}}{2 \mu} \Big)\Big\}\\
+ &=e^{2 \mu t}\E(X_0^2) + \gs^2 \frac{e^{2 \mu t}}{2 \mu} \Big( 1-e^{-2 \mu t} \Big)\\
+ &= e^{2 \mu t}\E(X_0^2) + \frac{\gs^2}{2 \mu}\Big( e^{2 \mu t}-1 \Big)
+ \end{align*}
+ Therefore:
+ \begin{align*}
+ \var(X_t) &= \E[X_t^2] - \E[X_t]^2 \\ &= e^{2 \mu t} \big\{ \E[X_0^2]-\E[X_0]^2\big\}+ \frac{\gs^2}{2 \mu}\Big( e^{2 \mu t}-1 \Big)\\ &= e^{2 \mu t} \var(X_0) +\frac{\gs^2}{2 \mu}\Big( e^{2 \mu t}-1 \Big)
+ \end{align*}
+ If $X_0$ is known, then $\var(X_0)=0$ and:
+ \begin{align*}
+  \var(X_t) =\frac{\gs^2}{2 \mu}\Big( e^{2 \mu t}-1 \Big)
+ \end{align*}
+ \end{proof}
+\end{enumerate}
+ \end{enumerate}
+ \section*{Problem 4 (5.7)}
+ The mean-reverting Ornstein-Uhlenbeck process is the solution $X_t$ of the Stochastic Differential Equation $$ d X _ { t } = \left( m - X _ { t } \right) d t + \sigma d B _ { t }$$ where $m,\gs$ are real constants and $B_t \in \bbr$.
+ \begin{enumerate}
+ \item Solve this equation
+ \begin{proof}
+We will use the integrating factor $e^t$.  Applying It\^o's Lemma to $d(e^{t}X_t)$ we get:
+\begin{align*}
+d(e^t X_t) &= X_t e^t dt + e^t dX_t\\
+&= X_t e^t dt + e^t \Big\{ (m-X_t)dt + \gs e^t dB_t\Big\}\\
+&= me^t  dt + \gs dB_t \\
+\int_0^t d(e^s X_s) &= \int_0^t me^s ds + \int_0^t \gs e^s dB_s\\
+e^t X_t -X_0 &= m (e^t -1) + \gs \int_0^t e^s dB_s\\
+X_t &= e^{-t} X_0 + m(1-e^{-t}) + \gs \int_0^t e^{s-t} dB_s
+\end{align*}
+ \end{proof}
+ \item  Find $\E [X_t]$ and $\var(X_t)$:
+ \begin{enumerate}
+ \item $\E[X_t]= e^{-t} \E[X_0] + m(1-e^{-t})$ 
+ \begin{proof}
+ This is trivial; $m$ and $e^{-t}$ are constant and the expectation of an It\^o integral is $0$.
+ \end{proof}
+ \item $\var (X_t)= e^{-2t} \var (X_0) + \frac{\gs^2}{2}(1-e^{-2t})$
+ \begin{proof}
+ \begin{align*}
+ \E[X_t^2] &= \E \Big\{ X_0^2 e^{-2t} +m^2(1-e^{-t})^2+\gs^2 \big( \int_0^t e^{s-t} dB_s \big)^2\\ &+ 2 X_0 e^{-t}m(1-e^{-t}) + 2 X_0 e^{-t}\int_0^t e^{s-t} dB_s+ 2 m(1-e^{-t}) \int_0^t e^{s-t} dB_s \Big\}\\
+ &= \E \Big\{ X_0^2 e^{-2t} +m^2(1-e^{-t})^2+\gs^2 \big( \int_0^t e^{s-t} dB_s \big)^2 \Big\} + 2 e^{-t}m(1-e^{-t}) \E[X_0] \\
+ &= 2 e^{-t}m(1-e^{-t}) \E[X_0] + e^{-2t}\E[X_0^2]+m^2(1-e^{-t})^2 + \gs^2 \E[ \big( \int_0^t e^{s-t} dB_s \big)^2]\\
+ &= 2 e^{-t}m(1-e^{-t}) \E[X_0] + e^{-2t}\E[X_0^2]+m^2(1-e^{-t})^2 + \gs^2 \E[  \int_0^t e^{2(s-t)} ds ]\\
+  &= 2 e^{-t}m(1-e^{-t}) \E[X_0] + e^{-2t}\E[X_0^2]+m^2(1-e^{-t})^2 + \gs^2 e^{-2t}\frac{1}{2}\Big(e^{2t}-1 \Big)\\
+  &= 2 e^{-t}m(1-e^{-t}) \E[X_0] + e^{-2t}\E[X_0^2]+m^2(1-e^{-t})^2 + \gs^2 \frac{1}{2}(1-e^{-2t})
+ \end{align*}
+ Therefore,
+ \begin{align*}
+  \var (X_t) &= \E [X_t^2] - \E [ X_t]^2\\
+  &= 2 e^{-t}m(1-e^{-t}) \E[X_0] + e^{-2t}\E[X_0^2]+m^2(1-e^{-t})^2 + \gs^2 \frac{1}{2}(1-e^{-2t})\\
+  &-(e^{-t} \E[X_0] + m(1-e^{-t}))^2\\
+  &= 2 m \E[X_0]e^{-t}(1-e^{-t})  + e^{-2t}\E[X_0^2]+m^2(1-e^{-t})^2 +\frac{\gs^2}{2}(1-e^{-2t})\\ &- e^{-2t}\E[X_0]^2-2m \E[X_0] e^{-t} (1-e^{-t})-m^2(1-e^{-t})^2\\
+  &= e^{-2t} \big( \E [X_0^2]- \E [X_0]^2 \big) - \frac{\gs^2}{2}(1-e^{-2t})\\
+  &= e^{-2t} \var (X_0) -\frac{\gs^2}{2}(1-e^{-2t})
+ \end{align*}
+ as expected.
+ \end{proof}
+  \end{enumerate}
+ \end{enumerate}
+ \section*{Problem 5 (5.11)}
+ For a fixed $a,b \in \bbr$ consider the following 1-dimensional equation $$ d Y _ { t } = \frac { b - Y _ { t } } { 1 - t } d t + d B _ { t } ; \quad 0 \leq t < 1 , Y _ { 0 } = a. $$
+Verify that $$Y _ { t } = a ( 1 - t ) + b t + ( 1 - t ) \int _ { 0 } ^ { t } \frac { d B _ { s } } { 1 - s } ; \quad 0 \leq t < 1$$ solves the equation and prove that $\lim_{t \to 1} Y_t=b \; \text{a.s.}$  The process $Y_t$ is called the Brownian Bridge (from $a$ to $b$).
+\begin{proof}
+Using the given value of $Y_t$ and applying It\^o's Lemma:
+\begin{align*}
+Y_t &= bt+\Big(a+ \int_0^t \frac{dB_s}{1-s}\Big) (1-t)\\
+dY_t &= \Big(b -a-\int_0^t \frac{dB_s}{1-s} \Big) dt + \frac{dB_t}{1-t} (1-t)\\
+&= \Big(b -a-\int_0^t \frac{dB_s}{1-s} \Big) dt + dB_t\\
+&= dB_t + \frac{1-t}{1-t}\Big(b -a-\int_0^t \frac{dB_s}{1-s} \Big) dt \\
+&= dB_t + \frac{1}{1-t}\Big(b-bt -a(1-t) -(1-t)\int_0^t \frac{dB_s}{1-s}\Big)dt \\
+&= dB_t + \frac{1}{1-t}\Big\{b-\Big(bt +a(1-t) +(1-t)\int_0^t \frac{dB_s}{1-s}\Big)\Big\}dt \\
+&= dB_t +\frac{b-Y_t}{1-t}dt
+\end{align*}
+as expected, where the regularity conditions to ensure existence (i.e. $0 \leq t < 1$) apply.  It suffices to show that 
+\begin{align*}
+\sup \Big\{ \E \abs{\Big( \int_0^t \frac{dB_s}{1-s} ds \Big)}: 0\leq t <1 \Big\}<\infty
+\end{align*}
+This is trivially true, because the expectation of the It\^o integral is $0$ for $0\leq t<1$.  Therefore, we have that $\E [Y_t] = bt+a(1-t)$ and, by Martingale Convergence, 
+\begin{align*}
+Y_t \xrightarrow{ t \nearrow 1} b \text{ a.s. }
+\end{align*}
+This limit exists almost surely, $\forall t<1$.
+\end{proof}
+ \section*{Problem 6 (5.17) The Gr\"{o}nwall Inequality}
+ Let $v(t)$ be a nonlinear function such that  $$v ( t ) \leq C + A \int _ { 0 } ^ { t } v ( s ) d s \quad \text { for } 0 \leq t \leq T$$ for some constants $C,A$.  Prove that $$v ( t ) \leq C \exp ( A t ) \quad \text { for } 0 \leq t \leq T.$$
+ \begin{proof}
+Following the hint provided, let $w(t) = \int_0^t v(s) ds$, and therefore $w'(t) = v(t)$ and $w(0)=0$.  Therefore $w'(t) = C+ Aw(t)$.  Therefore:
+\begin{align*}
+\frac{w'(t)}{C+Aw(t)} &\leq 1\\
+\frac{A w'(t)}{C+ Aw(t)} & \leq A
+\end{align*}
+Note that:
+\begin{align*}
+\frac{d}{dt} \log(C+Aw(t)) = \frac{A w'(t)}{C+ Aw(t)} &\leq A, \text{ so } \\
+\log(C+ Aw(t))-\log(C+Aw(0)) &\leq At \\
+\log \Big( \frac{C+Aw(t)}{C} \Big) &\leq At\\
+C+Aw(t)  &\leq Ce^{At}\\
+\end{align*}
+Therefore,
+\begin{align*}
+w(t) & \leq \frac{C}{A}(e^{At}-1) \\
+\int_0^t v(s) ds & \leq \frac{C}{A}(e^{At}-1) \\
+\end{align*}
+Therefore,
+\begin{align*}
+v(s) &\leq C+ A \int_0^t v(s) ds\\ &\leq C + C(e^{At}-1)\\
+& = Ce^{At}
+\end{align*}
+Therefore $v(s) \leq Ce^{At}$, and this proves Gr\"{o}nwall's inequality.
+\end{proof}
+ \section*{Problem 7 (5.18)}
+ The geometric mean-reversion process $X_t$ is defined as the solution of the stochastic differential equation:
+ $$d X _ { t } = \kappa \left( \alpha - \log X _ { t } \right) X _ { t } d t + \sigma X _ { t } d B _ { t } ; \quad X _ { 0 } = x > 0$$
+ where $\gk, \ga, \gs, \text{and } x$ are positive constants.
+ \begin{enumerate}
+ \item Show that the SDE above is solved by $$\left. \begin{array} { r l }  X _ { t } &: = \exp \Big\{ e ^ { - \kappa t } \ln x + \left( \alpha - \frac { \sigma ^ { 2 } } { 2 \kappa } \right) \left( 1 - e ^ { \kappa t } \right)    { + \sigma e ^ { - \kappa t } \int _ { 0 } ^ { t } e ^ { \kappa s } d B _ { s } } \Big\} \end{array} \right. $$
+ \begin{proof}
+We first use the substitution that $Y_t = \log X_t$.  Then, applying It\^o's formula to $dY_t$, we get:
+ \begin{align*}
+ dY_t&= 0 dt + \frac{1}{X_t}dX_t - \frac{1}{2X_t^2} d \ip{X}{X} _t\\
+ &= \frac{1}{X_t}\gk(\ga- \log X_t) X_t dt + \gs X_t d B_t  -\frac{1}{2X_t^2} \gs^2 X_t^2 dt\\
+ &= \gk(\ga-Y_t)dt + \gs dB_t -\frac{\gs^2}{2} dt
+ \end{align*}
+This is now a linear SDE in $Y_t$.  We will use the integrating factor $e^{\gk t}$ to cancel the $Y_t$ term.  Applying Ito's Lemma to $e^{\gk t}Y_t$:
+\begin{align*}
+d(e^{\gk t}Y_t) &= \gk e^{\gk t}Y_t dt + e^{\gk t} dY_t + 0\frac{1}{2} d \ip{Y}{Y}_t \\
+&= \gk e^{\gk t} Y_t dt + e^{\gk t}\big( \gk \ga dt - \gk Y_t dt \big) + \gs dB_t -\frac{\gs^2}{2} dt\\
+&=e^{\gk t} \gk \ga dt -\frac{\gs^2}{2} dt + \gs dB_t
+\end{align*}
+We can now integrate both sides:
+\begin{align*}
+\int_0^t d(e^{\gk s} Y_s) &= \gk \ga \int_0^t e^{\gk s}- \frac{\gs^2}{2} ds + \gs \int_0^t dB_s\\
+e^{\gk t}Y_t - Y_0 &= (\gk \ga-\frac{\gs^2}{2}) \frac{1}{\gk} \big( e^{\gk t}-1\big) + \int_0^t\gs dB_s\\
+Y_t &= e^{-\gk t}Y_0 + (\ga - \frac{\gs^2}{2 \gk})(1-e^{-\gk t}) + \gs e^{-\gk t} \int_0^t dB_s
+\end{align*}
+Taking our initial condition $X_0=x>0$, we get $Y_0 = \log X_0 = \log x$.  Therefore, substituting $Y_t = e^{X_t}$ back into the equation, we get:
+\begin{align*}
+\log X_t &= e^{\gk t} \log x +  (\ga - \frac{\gs^2}{2 \gk})(1-e^{-\gk t}) + \gs e^{-\gk t} \int_0^t dB_s \\
+X_t &= \exp \Big\{ e^{\gk t} \log x +  (\ga - \frac{\gs^2}{2 \gk})(1-e^{-\gk t}) + \gs e^{-\gk t} \int_0^t dB_s  \Big\}
+\end{align*}
+as expected.
+ \end{proof}
+ \item Show that  $$E \left[ X _ { t } \right] = \exp \left( e ^ { - \kappa t } \ln x + \left( \alpha - \frac { \sigma ^ { 2 } } { 2 \kappa } \right) \left( 1 - e ^ { - \kappa t } \right) + \frac { \sigma ^ { 2 } \left( 1 - e ^ { - 2 \kappa t } \right) } { 2 \kappa } \right)$$
+ (note, book is wrong; last term should have a $4 \gk$ not a $2 \gk$ in the denominator)
+ \begin{proof} 
+ \begin{align} \label{eq:expectation}
+ \E X_t = \exp \Big\{ e^{-\gk t} \log x + (\ga -\frac{\gs^2}{2 \gk})(1-e^{-\gk t} ) \Big\} \E \Big\{\exp \big( \gs e^{-kt} \int_0^t e^{ks} dB_s \big) \Big\}
+ \end{align}
+ We wish to show that $$ \label{eq:expterm}\gs e^{-kt} \int_0^t e^{ks} dB_s$$ is normally distributed.  It suffices to show that  $\int_0^t e^{ks} dB_s$ is normally distributed.
+ \begin{align*}
+d(e^{kt}B_t) &= ke^{kt} B_t dt + e^{kt} dB_t\\
+e^{kt} B_t &= \int_0^t ke^{ks} B_s ds + \int_0^t e^{ks} dB_s\\
+\int_0^t e^{ks} dB_s &= e^{kt}B_t - \int_0^t ke^{ks} B_s ds 
+ \end{align*}
+ We know the right-hand side terms are normally distributed, so their difference is also normally distributed.  Further, it is mean $0$. 
+We now know that (\ref{eq:expterm}) is normally distributed with $0$ mean.  We can calculate the expectation term in (\ref{eq:expectation}) by calculating the MGF of (\ref{eq:expterm}) where the argument of the MGF is 1.  In order to do that, we need the its variance.  We will now calculate $\var(\gs e^{-kt} \int_0^t e^{ks} dB_s )$.
+\begin{align*}
+\var(\gs e^{-kt} \int_0^t e^{ks} dB_s ) &= \E \Big\{ \big( \gs e^{-kt} \int_0^t e^{ks} dB_s \big)^2 \Big\}\\
+\text{(It\^o's Isometry)} &= \E\Big\{ \gs^2 e^{-2kt} \int_0^t e^{2ks} ds\Big\}\\
+&= \gs^2 e^{-2kt} \int_0^t e^{2ks} ds\\
+&= \frac{\gs^2 e^{-2kt} }{2k} \Big( e^{2kt}-1\Big)\\
+&= \frac{\gs^2}{2k} \Big(1 - e^{-2kt} \Big)
+\end{align*}
+Therefore the MGF of $\gs e^{-kt} \int_0^t e^{ks} dB_s$ with an argument of $1$ is $$e^{ \frac{1}{2} \frac{\gs^2}{2k} (1 - e^{-2kt} )}= e^{\frac{\gs^2(1-e^{-2kt})}{4k}}$$
+so we therefore have
+\begin{align*}
+\E X_t = \exp \Big\{ e^{-\gk t} \log x + (\ga -\frac{\gs^2}{2 \gk})(1-e^{-\gk t} )+ \frac{\gs^2(1-e^{-2kt})}{4k}\Big\} 
+\end{align*}
+ \end{proof}
+ \end{enumerate}
+\end{document}
